@@ -10,6 +10,7 @@ const Button = styled.button`
   color: ${props => props.color || "#fff"};
   background-color: ${props => props.background || color.blue};
   border-radius: ${props => props.radius || 0};
+  position: ${props => props.position || "relative"};
 `;
 
 const BigLoginButton = ({ children, ...props }) => {
