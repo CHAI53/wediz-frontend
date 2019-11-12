@@ -6,7 +6,6 @@ const LogoButton = styled(BigLoginButton)`
 position: relative;
 padding: ${props => props.padding || 0}
 vertical-align: middle;
-
 `;
 
 const BeforeText = styled.span`

@@ -50,8 +50,8 @@ const ChkboxWrap = styled.div`
 const SquareChkBox = ({ ...props }) => {
   return (
     <ChkboxWrap>
-      <Input type="checkbox" id="checkbox_2"></Input>
-      <Label for="checkbox_2"></Label>
+      <Input type="checkbox" {...props}></Input>
+      <Label {...props}></Label>
     </ChkboxWrap>
   );
 };
