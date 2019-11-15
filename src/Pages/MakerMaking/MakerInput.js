@@ -9,7 +9,7 @@ const MakerName = styled.div`
 
 const MakerLabel = styled.label`
   display: block;
-  천ㅅmargin-bottom: 8px;
+  margin-bottom: 8px;
   line-height: 24px;
   color: rgba(0, 0, 0, 0.84);
   font-size: 17px;

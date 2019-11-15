@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import InputBox from "Components/InputBox";
-import { loginAPI } from "Datas/Config";
+import { API_TS } from "Datas/Config";
 import LoginSignupHeader from "Components/LoginSignupHeader";
 import LoginAction from "./LoginAction";
 import BigLoginButton from "Components/BigLoginButton/BigLoginButton";
@@ -40,20 +40,21 @@ class Login extends Component {
 
   handleLogin = () => {
     const { email, password } = this.state;
-    fetch(`${loginAPI}/login`, {
+    fetch(`${API_TS}/account/signin`, {
       method: "post",
-      body: {
+      body: JSON.stringify({
         email,
         password
-      }
+      })
     })
-      .then(res => res.json)
-      .then(res => console.log("res"));
+      .then(res => res.json())
+      .then(res => console.log(res));
   };
 
   render() {
-    const { email, inputState } = this.state;
+    const { email, inputState, password } = this.state;
     const { handleChange, handleLogin } = this;
+    console.log(email, password);
     return (
       <>
         <main>
