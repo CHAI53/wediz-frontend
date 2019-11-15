@@ -1,7 +1,8 @@
 export const color = {
   blue: "#00C4C4",
   white: "#ffffff",
-  black: "rgba(0, 0, 0, 0.84)"
+  black: "rgba(0, 0, 0, 0.84)",
+  red: "#F25555"
 };
 export const font = {
   size: "15px",
