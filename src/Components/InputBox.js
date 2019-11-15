@@ -14,14 +14,20 @@ export default InputBox;
 
 const Input = styled.input`
   width: 100%;
-  margin: 5px 0;
-  height: 48px;
-  font-size: 17px;
+  margin: ${props => props.margin || "5px 0"};
+  height: ${props => props.height || "48px"};
+  font-size: ${props => props.size || "17px"};
   padding: 0 10px;
   box-sizing: border-box;
-  border: 1px solid #efefef;
+  border: 1px solid ${props => props.borderColor || "#efefef"};
+  border-radius: ${props => props.radius || ""}
   transition: 0.4s;
   color: rgba(0, 0, 0, 0.84);
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   :hover {
     border: 1px solid black;
     transition: border 0.4s;
