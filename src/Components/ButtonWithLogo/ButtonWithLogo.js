@@ -5,7 +5,6 @@ import BigLoginButton from "Components/BigLoginButton";
 const LogoButton = styled(BigLoginButton)`
 padding: ${props => props.padding || 0}
 vertical-align: middle;
-
 `;
 
 const BeforeText = styled.span`
