@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import BigLoginButton from "Components/BigLoginButton/BigLoginButton";
+import BigLoginButton from "Components/BigLoginButton";
 import MakerNav from "./MakerNav";
 import MakerDesc from "./MakerDesc";
 import MakerSelection from "./MakerSelection";
