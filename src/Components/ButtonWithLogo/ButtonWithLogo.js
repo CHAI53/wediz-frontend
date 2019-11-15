@@ -3,7 +3,6 @@ import styled from "styled-components";
 import BigLoginButton from "Components/BigLoginButton";
 
 const LogoButton = styled(BigLoginButton)`
-position: relative;
 padding: ${props => props.padding || 0}
 vertical-align: middle;
 `;

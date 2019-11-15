@@ -1,48 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { color, font } from "Styles/Common.js";
 import wadizlogo from "Images/wadiz-logo.png";
 import searcher from "Images/searcher.png";
-
-function NavBar(props) {
-  const handleClick1 = () => {
-    props.history.push("/");
-  };
-  const handleClick2 = () => {
-    props.history.push("/");
-  };
-  const handleClick3 = () => {
-    props.history.push("/");
-  };
-  const handleClick4 = () => {
-    props.history.push("/");
-  };
-
-  return (
-    <Header>
-      <ContainerL>
-        <Logo onClick={handleClick1}>
-          <LogoImg />
-        </Logo>
-        <Icon>
-          <List>
-            <ListItem>리워드</ListItem>
-          </List>
-          <List>
-            <ListItem>더보기</ListItem>
-          </List>
-        </Icon>
-      </ContainerL>
-      <ContainerR>
-        <SearchBtn></SearchBtn>
-        <LoginBtn onClick={handleClick2}>로그인</LoginBtn>
-        <LoginBtn onClick={handleClick3}>회원가입</LoginBtn>
-        <OpenBtn onClick={handleClick4}>리워드오픈 신청하기</OpenBtn>
-      </ContainerR>
-    </Header>
-  );
-}
 
 const Header = styled.header`
   display: flex;
@@ -143,5 +104,42 @@ const OpenBtn = styled.button`
     background-color: ${color.blue};
   }
 `;
+
+class NavBar extends Component {
+  handleClick = e => {
+    this.props.history.push(`${e.target.name}`);
+  };
+  render() {
+    return (
+      <Header>
+        <ContainerL>
+          <Logo onClick={this.handleClick} name="/">
+            <LogoImg />
+          </Logo>
+          <Icon>
+            <List>
+              <ListItem>리워드</ListItem>
+            </List>
+            <List>
+              <ListItem>더보기</ListItem>
+            </List>
+          </Icon>
+        </ContainerL>
+        <ContainerR>
+          <SearchBtn></SearchBtn>
+          <LoginBtn onClick={this.handleClick} name="/login">
+            로그인
+          </LoginBtn>
+          <LoginBtn onClick={this.handleClick} name="/signup">
+            회원가입
+          </LoginBtn>
+          <OpenBtn onClick={this.handleClick} name="/maker">
+            리워드오픈 신청하기
+          </OpenBtn>
+        </ContainerR>
+      </Header>
+    );
+  }
+}
 
 export default withRouter(NavBar);

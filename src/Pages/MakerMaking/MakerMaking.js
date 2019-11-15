@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import BigLoginButton from "Components/BigLoginButton/BigLoginButton";
 import MakerNav from "./MakerNav";
 import MakerDesc from "./MakerDesc";
 import MakerSelection from "./MakerSelection";
 import MakerInput from "./MakerInput";
-import BigLoginButton from "Components/BigLoginButton/BigLoginButton";
-import SquareChkBox from "Components/SquareChkBox";
 import MakerHelper from "./MakerHelper";
 
 const MakerWrapper = styled.div`
