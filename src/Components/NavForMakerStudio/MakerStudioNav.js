@@ -1,12 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
-import CategoryForFunding from './CategoryForFunding'
-import category from '../../Datas/CategoryForMakerStudio.js'
-
-class CategoryForMakerStudio extends React.Component {
-    state = {
-        category: category.category,
-        detect: "",
+import CategoryForMakerStudio from './CategoryForMakerStudio.js'
+// const { detect, category } = this.props.navCategory
+class MakerStudioNav extends React.Component {
+    constructor(props) {
+        super(props)
+        const { category, detect, list } = this.props.navCategory
+        this.state = {
+            category: category,
+            detect: detect,
+            // list: this.props.navCategory.list,
+            // optionOne: "",
+            // optionTwo: "",
+            // optionThree: "",
+            // optionFour: "",
+            // optionFive: "",
+            sectionOne: list,
+            address: ""
+        }
     }
     // handleControl = (value) => {
     //     const { distinguisher } = this.state
@@ -26,7 +37,7 @@ class CategoryForMakerStudio extends React.Component {
     //             )
     //     }
     // }
-    handleView = (selected) => {
+    handleUnfold = (selected) => {
         //     this.state.detect === selected ?
         //         this.setState({
         //             detect: ""
@@ -40,30 +51,43 @@ class CategoryForMakerStudio extends React.Component {
         })
         console.log("is event happening?===")
     }
+    handleRenderPage = (id) => {
+        console.log(id)
+        this.setState({
+            address: id
+        }, () => this.props.getAddress(this.state.address))
+        console.log("handleRenderPage", this.state.address)
+
+
+    }
 
     render() {
-
         // console.log("부모에서 넘어가는 변경할 props", this.state.distinguisher)
         console.log("is setState working when click each ticket?===", this.state.detect)
-        const { category, detect } = this.state
+        console.log("is setState working when click each section?===", this.state.address)
+        const { category, detect, address, sectionOne } = this.state
         const navCategory = category.map((data) => (
-            <CategoryForFunding
+            <CategoryForMakerStudio
                 info={data}
-                control={detect === data.name}
-                show={() => { this.handleView(data.name) }}
-            />
+                unfold={detect === data.name}
+                show={() => { this.handleUnfold(data.name) }}
+                highlight={address}
+                callRender={this.handleRenderPage}
+
+            >
+            </CategoryForMakerStudio>
         ));
         return (
-            <ContainerNav>
+            <NavContainer>
                 <CategoryContainer>
                     {navCategory}
                 </CategoryContainer>
-            </ContainerNav>
+            </NavContainer>
         )
     }
 }
 
-export default CategoryForMakerStudio;
+export default MakerStudioNav;
 
 const CategoryContainer = styled.ul`
 margin: 0;
@@ -72,7 +96,7 @@ width: 240px;
 
 `
 
-const ContainerNav = styled.nav`
+const NavContainer = styled.nav`
 width: 240px;
 
 `

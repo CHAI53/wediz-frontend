@@ -1,7 +1,6 @@
 import React from 'react'
 import MakerLogo from 'Images/makerstudiologo.png'
 import ImgCompany from 'Images/imgcompany.png'
-import './HeaderForMakerStudio.scss'
 import styled from 'styled-components'
 
 class HeaderForMakerStudio extends React.Component {
@@ -13,7 +12,7 @@ class HeaderForMakerStudio extends React.Component {
                 </HeaderLeft>
                 <HeaderCenter>
                     <CompanyLogo></CompanyLogo>
-                    <div>WEDIZ</div>
+                    <div>위디즈</div>
                 </HeaderCenter>
                 <HeaderRight>
                     <ButtonContainer>

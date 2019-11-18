@@ -17,7 +17,7 @@ class Routes extends React.Component {
           <Route exact path="/maker" component={MakerMaking} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={EmailSignup} />
-          <Route exact path="/funding" component={MakerStudioPage} />
+          <Route exact path="/maker/studio/funding" component={MakerStudioPage} />
           <Route exact path="/experiments" component={TestOne} />
         </Switch>
       </Router>

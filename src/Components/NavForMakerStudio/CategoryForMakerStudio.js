@@ -6,7 +6,13 @@ import LockImg from 'Images/lockfornav.png'
 //     optionThree, optionFour, optionFive, unlock, value, } = this.props.info
 // const { show } = this.props
 
-const CategoryForFunding = ({ show, control, info }) => {
+class CategoryForMakerStudio extends React.Component {
+    state = {
+        id: ""
+    }
+    // state = {
+    //     checkClicked: ""
+    // }
     // ===========================nav바 펼치기 숨기기 로직 구현 no.1에 필요했던 constructor===============================================
     // const { show } = props
     // const { control } = control
@@ -104,70 +110,123 @@ const CategoryForFunding = ({ show, control, info }) => {
 
     // console.log(this.props.info.title, "렌더의 state는===", this.state)
     // console.log(this.props.info.title, "렌더의 props는===", this.props.open)
-    console.log("show는===", show)
-    console.log("control는===", control)
-    console.log("info는===", info)
-    const { title, optionZero, optionOne, optionTwo,
-        optionThree, optionFour, optionFive, unlock, value } = info
-    return (
-        <Category>
-            {unlock ?
-                <CategoryList
-                    control={control} id={value}
-                    onClick={show}
-                >
-                    <CategoryName
-                        id={value} unlock
+    handleDetectClick = (event) => {
+        console.log("handleDetectClick")
+        // const check = this.state
+        this.setState({
+            id: event.target.id
+        }, () => this.props.callRender(this.state.id))
+        // this.props.callRender(event, this.state
+        //     ()=> this.setState({
+        //         [event.target.name]: ""
+        //     })
+        // )
+    }
+    render() {
+        console.log("handleDetectClick", this.state.id)
+        console.log("show는===", this.props.show)
+        console.log("unfold는===", this.props.unfold)
+        console.log("info는===", this.props.info)
+        const { title, optionZero, optionZeroId, optionOne, optionOneId, optionTwo, optionTwoId,
+            optionThree, optionThreeId, optionFour, optionFourId, optionFive, optionFiveId,
+            unlock, value } = this.props.info
+        const { show, unfold, highlight } = this.props
+        const { id } = this.state
+        return (
+            <Category>
+                {unlock ?
+                    <CategoryList
+                        control={unfold} id={value}
                         onClick={show}
-                    >
-                        {title}
-                    </CategoryName>
-                    <Arrow
-                        id={value} type="checkbox" >
-                    </Arrow>
-                </CategoryList>
-                :
-                <CategoryList id={value} >
-                    <CategoryName onClick={show}>
-                        {title}
-                    </CategoryName>
-                    <Lock disabled="true" type="checkbox">
-                    </Lock>
-                </CategoryList>
-            }
-            {
-                optionZero &&
 
-                <OptionList control={control}>
-                    <Option >
-                        {optionZero}
-                    </Option>
-                    <Link
-                        to='/funding/baseInfo' style={{ textDecoration: "none" }}
                     >
-                        <Option>
-                            {optionOne}
+                        <CategoryName
+                            id={value} unlock
+                            onClick={show}
+                        >
+                            {title}
+                        </CategoryName>
+                        <Arrow
+                            id={value} type="checkbox"
+                            checked={unfold && "checked"}
+                        >
+                        </Arrow>
+                    </CategoryList>
+                    :
+                    <CategoryList id={value} >
+                        <CategoryName onClick={show}>
+                            {title}
+                        </CategoryName>
+                        <Lock disabled="true" type="checkbox">
+                        </Lock>
+                    </CategoryList>
+                }
+                {
+                    optionZero &&
+
+                    <OptionList control={unfold}>
+                        <Option
+                            onClick={this.handleDetectClick}
+                            name="optionZero"
+                            id={optionZeroId}
+                            hightlight={highlight === optionZeroId}
+                        >
+
+                            {optionZero}
+
                         </Option>
-                    </Link>
-                    <Option>
-                        {optionTwo}
-                    </Option>
-                    <Option>
-                        {optionThree}
-                    </Option>
-                    <Option>
-                        {optionFour}
-                    </Option>
-                    <Option>
-                        {optionFive}
-                    </Option>
-                </OptionList>
-            }
+                        <Link
+                            to='/maker/studio/funding' style={{ textDecoration: "none" }}
+                        >
+                            <Option
+                                name="optionOne"
+                                id={optionOneId}
+                                onClick={this.handleDetectClick}
+                                hightlight={highlight === optionOneId}
+                            >
+                                {optionOne}
+                            </Option>
+                        </Link>
+                        <Option
+                            name="optionTwo"
+                            id={optionTwoId}
+                            onClick={this.handleDetectClick}
+                            hightlight={highlight === optionTwoId}
+                        >
+                            {optionTwo}
+                        </Option>
+                        <Option
+                            name="optionThree"
+                            id={optionThreeId}
+                            onClick={this.handleDetectClick}
+                            hightlight={highlight === optionThreeId}
+                        >
+                            {optionThree}
+                        </Option>
+                        <Option
+                            name="optionFour"
+                            id={optionFourId}
+                            onClick={this.handleDetectClick}
+                            hightlight={highlight === optionFourId}
+                        >
+                            {optionFour}
+                        </Option>
+                        <Option
+                            name="optionFive"
+                            id={optionFiveId}
+                            onClick={this.handleDetectClick}
+                            hightlight={highlight === optionFiveId}
+                        >
+                            {optionFive}
+                        </Option>
+                    </OptionList>
+                }
 
-        </Category >
-    )
+            </Category >
+        )
+    }
 }
-export default CategoryForFunding;
+export default CategoryForMakerStudio;
 
 // const CategoryContainer = styled.ul`
 
@@ -181,6 +240,7 @@ font-size: 14px;
 // justify-content: center;
 // position: relative;
 // flex-direction: column;
+list-style: none;
 `
 
 const CategoryList = styled.div`
@@ -201,11 +261,15 @@ display: ${props => props.control ? "block" : "none"};
 const Option = styled.li`
 list-style: none;
 background-color: #f8f8f9;
-color:#44484b;
+color:${props => props.hightlight ? "#00a2a2" : "#44484b"}
 margin-left: 0;
 padding: 16px 70px;
 font-size: 13px;
-text-decoration:none;
+/* text-decoration:none; */
+cursor: pointer;
+/* :hover {
+    color: #00a2a2
+} */
 `
 
 const Arrow = styled.input`
