@@ -10,6 +10,8 @@ const InputBox = ({ ...props }) => {
   );
 };
 
+export default InputBox;
+
 const Input = styled.input`
   width: 100%;
   margin: 5px 0;
@@ -33,5 +35,3 @@ const Input = styled.input`
     transition: 0.4s;
   }
 `;
-
-export default InputBox;

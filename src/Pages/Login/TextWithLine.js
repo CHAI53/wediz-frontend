@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+const TextWithLine = () => {
+  return (
+    <Or>
+      <Span>또는</Span>
+    </Or>
+  );
+};
+
+export default TextWithLine;
+
 const Or = styled.div`
   text-align: center;
   margin: 20px 0;
@@ -14,12 +24,3 @@ const Span = styled.span`
   padding: 0 10px;
   font-size: 12px;
 `;
-const TextWithLine = () => {
-  return (
-    <Or>
-      <Span>또는</Span>
-    </Or>
-  );
-};
-
-export default TextWithLine;

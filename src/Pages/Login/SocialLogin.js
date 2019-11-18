@@ -4,15 +4,6 @@ import ButtonWithLogo from "Components/ButtonWithLogo";
 import kakaoLogo from "Images/kakao-icon.png";
 import googleLogo from "Images/google-icon.png";
 
-const Grid = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
-  button {
-    width: 180px;
-  }
-`;
-
 const SocialLogin = () => {
   return (
     <Grid>
@@ -37,3 +28,12 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
+const Grid = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  button {
+    width: 180px;
+  }
+`;
