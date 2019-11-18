@@ -1,1 +1,1 @@
-export { default } from "./Stoy";
+export { default } from "./FundingStory";
