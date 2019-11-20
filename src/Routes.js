@@ -11,12 +11,11 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/projectview" component={ProjectView} />
           <Route exact path="/" component={MainPage} />
-          <Route exact path="/maker" component={MakerMaking} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={EmailSignup} />
+          <Route exact path="/project" component={ProjectView} />
+          <Route exact path="/maker" component={MakerMaking} />
         </Switch>
       </Router>
     );

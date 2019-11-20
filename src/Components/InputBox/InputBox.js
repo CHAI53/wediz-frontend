@@ -28,7 +28,7 @@ const Input = styled.input`
     border: 1px solid ${color.blue};
   }
   :disabled {
-    background-color: #edebeb
+    background-color: #edebeb;
     border: 1px solid rgba(0, 0, 0, 0.16);
     transition: 0.4s;
   }

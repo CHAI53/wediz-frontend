@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { font, device, color } from "Styles/Common.js";
+import { font, color } from "Styles/Common.js";
 
 const FooterWrapper = styled.div`
   padding: 48px 16px 15px;
   box-shadow: inset 0 1px #ebeced;
   background: #fafbfc;
   line-height: 18px;
-  word-break: keep-all;
   color: #212121;
   font-size: ${font.size};
   margin-bottom: 24px;
@@ -15,7 +14,7 @@ const FooterWrapper = styled.div`
 `;
 
 const CopyRight = styled.p`
-  color: ${color.blue}};
+  color: ${color.blue};
   font-weight: 700;
 `;
 
