@@ -5,6 +5,10 @@ import ProjectView from "./Pages/ProjectView/ProjectView";
 import MainPage from "./Pages/MainPage";
 import MakerMaking from "./Pages/MakerMaking/MakerMaking";
 import EmailSignup from "Pages/EmailSignup";
+import MakerStudioPage from "./Pages/MakerStudioPage";
+import TestOne from "./Pages/Testing";
+
+import MyProfile from "./Pages/MyProfile";
 
 class Routes extends React.Component {
   render() {
@@ -16,6 +20,9 @@ class Routes extends React.Component {
           <Route exact path="/signup" component={EmailSignup} />
           <Route exact path="/project" component={ProjectView} />
           <Route exact path="/maker" component={MakerMaking} />
+          <Route exact path="/funding" component={MakerStudioPage} />
+          <Route exact path="/experiments" component={TestOne} />
+          <Route exact path="/myprofile" component={MyProfile} />
         </Switch>
       </Router>
     );

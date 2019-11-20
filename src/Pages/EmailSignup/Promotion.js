@@ -2,6 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import SquareChkBox from "Components/SquareChkBox";
 
+const Promotion = props => {
+  return (
+    <Container>
+      <SquareChkBox {...props} />
+      <InputInfo>프로모션 코드</InputInfo>
+      <Span>(선택사항)</Span>
+    </Container>
+  );
+};
+
+export default Promotion;
+
 const Container = styled.div`
   margin-top: 30px;
   display: flex;
@@ -20,15 +32,3 @@ const Span = styled.span`
   margin-left: 5px;
   font-weight: 300;
 `;
-
-const Promotion = props => {
-  return (
-    <Container>
-      <SquareChkBox {...props} />
-      <InputInfo>프로모션 코드</InputInfo>
-      <Span>(선택사항)</Span>
-    </Container>
-  );
-};
-
-export default Promotion;

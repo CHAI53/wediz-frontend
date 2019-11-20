@@ -1,27 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { API_TS } from "Datas/Config.js";
+import { withRouter } from "react-router-dom";
 import { color } from "Styles/Common.js";
+import { API_TS } from "Datas/Config.js";
 import LoginSignupHeader from "Components/LoginSignupHeader";
 import InputWithButton from "Components/InputWithButton";
 import InputWithImage from "Components/InputWithImage";
 import BigLoginButton from "Components/BigLoginButton";
+import WrongMessage from "Components/WrongMessage";
 import TotalAgree from "./TotalAgree";
 import Promotion from "./Promotion";
 import user from "Images/user.png";
 import lock from "Images/lock.png";
-
-const Container = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 80px 16px 96px;
-  position: relative;
-`;
-const InputInfo = styled.div`
-  line-height: 18px;
-  font-size: 13px;
-  color: ${props => props.color || "rgba(0, 0, 0, 0.8)"};
-`;
 
 class EmailSignup extends Component {
   state = {
@@ -32,7 +22,16 @@ class EmailSignup extends Component {
     is_agree: false,
     promotion: false,
     email_state: false,
-    is_verify: false
+    is_verify: false,
+    is_submit: true
+  };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.re_password !== this.state.re_password) {
+      this.setState({
+        is_submit: false
+      });
+    }
   };
 
   handleChange = e => {
@@ -54,31 +53,53 @@ class EmailSignup extends Component {
     });
   };
 
+  goToLogin = () => {
+    this.props.history.push("/login");
+  };
+
   handlePost = () => {
-    const { email, user_name, password, is_agree, promotion } = this.state;
-    fetch(`${API_TS}/account/signup`, {
-      method: "post",
-      body: JSON.stringify({
-        email,
-        user_name,
-        password,
-        is_agree,
-        promotion
+    const {
+      email,
+      user_name,
+      password,
+      re_password,
+      is_agree,
+      promotion
+    } = this.state;
+    if (
+      email &&
+      user_name &&
+      password &&
+      re_password &&
+      password === re_password
+    ) {
+      fetch(`${API_TS}/account/signup`, {
+        method: "post",
+        body: JSON.stringify({
+          email,
+          user_name,
+          password,
+          is_agree,
+          promotion
+        })
       })
-    })
-      .then(res => res.json())
-      .then(res => console.log(res));
+        .then(res => res.json())
+        .then(res => {
+          return this.goToLogin();
+        });
+    }
   };
 
   render() {
     const {
+      email,
       password,
       re_password,
       is_agree,
       promotion,
-      is_verify
+      is_verify,
+      is_submit
     } = this.state;
-    console.log(is_agree, promotion);
     return (
       <>
         <main>
@@ -100,6 +121,12 @@ class EmailSignup extends Component {
               인증하기
             </InputWithButton>
             <InputInfo>위 이메일로 인증번호가 발송됩니다.</InputInfo>
+            {email && (!email.includes("@") || !email.includes(".")) ? (
+              <WrongMessage> 이메일 형식이 올바르지 않습니다.</WrongMessage>
+            ) : (
+              ""
+            )}
+
             <InputWithImage
               placeholder="이름"
               imgUrl={user}
@@ -137,13 +164,16 @@ class EmailSignup extends Component {
             ) : (
               ""
             )}
-
             <Promotion
               name="promotion"
               defaultChecked={promotion}
               onClick={this.handleClick}
             />
-            <BigLoginButton radius="3px" onClick={this.handlePost}>
+            <BigLoginButton
+              radius="3px"
+              onClick={this.handlePost}
+              disabled={is_submit}
+            >
               완료
             </BigLoginButton>
           </Container>
@@ -153,4 +183,16 @@ class EmailSignup extends Component {
   }
 }
 
-export default EmailSignup;
+export default withRouter(EmailSignup);
+
+const Container = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 80px 16px 96px;
+  position: relative;
+`;
+const InputInfo = styled.div`
+  line-height: 18px;
+  font-size: 13px;
+  color: ${props => props.color || "rgba(0, 0, 0, 0.8)"};
+`;
