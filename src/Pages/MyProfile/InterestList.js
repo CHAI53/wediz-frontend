@@ -32,11 +32,13 @@ const Li = styled.li`
   display: inline-block;
   margin-bottom: 10px;
   height: 20px;
+  position: relative;
 `;
 
 const Span = styled.span`
   font-size: 15px;
   line-height: 20px;
+  vertical-align: top;
 `;
 
 const CircleChkBox = styled(SquareChkBox)`

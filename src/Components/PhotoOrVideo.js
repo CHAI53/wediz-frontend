@@ -12,6 +12,7 @@ const PhotoOrVideo = ({ children, ...props }) => {
         display="none"
         checked={props.checked && "checked"}
         onClick={props.onClick}
+        chungRyulColor={color.blue}
       />
       <ButtonName id={props.id} name={props.id}>
         {children}

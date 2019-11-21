@@ -5,7 +5,6 @@ import MakerStudioNav from "./MakerStudioNav.js";
 import navCategoryForMakerStudio from "Datas/CategoryForMakerStudio.js";
 import FundingStory from "../../Components/FundingStory.js";
 
-
 class MakerStudioPage extends React.Component {
   state = {
     category: navCategoryForMakerStudio.category,

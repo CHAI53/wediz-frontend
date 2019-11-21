@@ -46,6 +46,7 @@ class MyProfile extends Component {
     const formData = new FormData();
     if (selectedFile) {
       formData.append("photo", selectedFile, selectedFile.name);
+      console.log(formData);
       axios
         .post(`${API_TS}/account/modifyprofilephoto`, formData, {
           headers: {
