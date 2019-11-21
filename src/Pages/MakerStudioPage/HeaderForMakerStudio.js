@@ -37,7 +37,7 @@ const Container = styled.div`
   align-items: stretch;
   position: fixed;
   background-color: white;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const HeaderLeft = styled.div`

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 import FundingStoryIntroForm from "./FundingStoryIntroForm";
 import FundingMockUpData from "Datas/CategoryForMakerStudio.js";
 import StorySummary from "./StorySummary.js";
 import MyEditor from "./MyEditor/MyEditor.js";
 import ProjectStory from "./ProjectStory.js";
-// import axios from "axios"
 
 class FundingStory extends Component {
   constructor() {
@@ -29,8 +28,7 @@ class FundingStory extends Component {
     // const htmlCode = window.locaStorage.getItem("content")
     // Axios.post('10.58.2.201:8004/user/signin',{
     //   params: {
-    //     email:this.props.idvalue,
-    //     password: this.props.pwvalue
+    // content: htmlCode
     //   }
     // })
     //   .then(res => {
