@@ -5,10 +5,10 @@ import { color } from "Styles/Common.js";
 
 const RewardOption = props => {
   const {
-    id,
     index,
     price,
     name,
+    option,
     stock,
     delivery_fee,
     date,
@@ -30,7 +30,8 @@ const RewardOption = props => {
         </Terms>
         <Description>
           <PTag>{price}원 펀딩합니다.</PTag>
-          <Span size="14px">{name}</Span>
+          <Span size="14px">{option}</Span>
+          <Option>{name}</Option>
           <Span>({stock}개 남음)</Span>
           <Option>
             배송비 {delivery_fee ? `${delivery_fee}원` : "없음"} | 리워드 제공
