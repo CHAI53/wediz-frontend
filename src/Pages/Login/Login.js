@@ -1,35 +1,28 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import InputBox from "Components/InputBox";
+import { withRouter } from "react-router-dom";
 import { API_TS } from "Datas/Config";
-import LoginSignupHeader from "Components/LoginSignupHeader";
+import InputBox from "Components/InputBox.js";
+import LoginSignupHeader from "Components/LoginSignupHeader.js";
+import WrongMessage from "Components/WrongMessage";
+import BigLoginButton from "Components/BigLoginButton.js";
 import LoginAction from "./LoginAction";
-import BigLoginButton from "Components/BigLoginButton/BigLoginButton";
-import TextWithLine from "./TextWithLine";
-import ButtonWithLogo from "Components/ButtonWithLogo/ButtonWithLogo";
+import ButtonWithLogo from "Components/ButtonWithLogo.js";
 import SocialLogin from "./SocialLogin";
-import facebookLogo from "Images/facebook-icon.png";
+import TextWithLine from "./TextWithLine";
 import GoToSignup from "./GoToSignup";
-
-const Wrong = styled.span`
-  font-size: 13px;
-  color: #f25555;
-  display: inline-block;
-  margin-left: 2px;
-  margin-bottom: 7px;
-`;
-
-const Container = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 80px 16px 96px;
-`;
+import facebookLogo from "Images/facebook-icon.png";
 
 class Login extends Component {
   state = {
     email: "",
     password: "",
-    inputState: ""
+    inputState: "",
+    is_login: "none"
+  };
+
+  goToMain = () => {
+    this.props.history.push("/main");
   };
 
   handleChange = e => {
@@ -48,13 +41,21 @@ class Login extends Component {
       })
     })
       .then(res => res.json())
-      .then(res => console.log(res));
+      .then(res => {
+        window.localStorage.setItem("VALID_TOKEN", res.VALID_TOKEN);
+        if (res.VALID_TOKEN) {
+          this.goToMain();
+        } else {
+          this.setState({
+            is_login: "inline"
+          });
+        }
+      });
   };
 
   render() {
-    const { email, inputState, password } = this.state;
+    const { email, inputState, is_login } = this.state;
     const { handleChange, handleLogin } = this;
-    console.log(email, password);
     return (
       <>
         <main>
@@ -67,7 +68,7 @@ class Login extends Component {
               inputState={inputState}
             />
             {email && (!email.includes("@") || !email.includes(".")) ? (
-              <Wrong> 이메일 형식이 올바르지 않습니다.</Wrong>
+              <WrongMessage> 이메일 형식이 올바르지 않습니다.</WrongMessage>
             ) : (
               ""
             )}
@@ -76,6 +77,10 @@ class Login extends Component {
               placeholder="비밀번호(영문, 숫자, 특수문자 포함 8자 이상)"
               type="password"
             />
+            <WrongMessage display={is_login}>
+              와디즈에 등록되지 않은 아이디거나, 아이디 또는 비밀번호가
+              회원정보와 일치하지 않습니다.
+            </WrongMessage>
             <LoginAction />
             <BigLoginButton radius="3px" onClick={handleLogin}>
               로그인
@@ -93,4 +98,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
+
+const Container = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 80px 16px 96px;
+`;

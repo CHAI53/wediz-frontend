@@ -1,17 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import ButtonWithLogo from "Components/ButtonWithLogo";
+import ButtonWithLogo from "Components/ButtonWithLogo.js";
 import kakaoLogo from "Images/kakao-icon.png";
 import googleLogo from "Images/google-icon.png";
-
-const Grid = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
-  button {
-    width: 180px;
-  }
-`;
 
 const SocialLogin = () => {
   return (
@@ -37,3 +28,12 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
+const Grid = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  button {
+    width: 180px;
+  }
+`;
