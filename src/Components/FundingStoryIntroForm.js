@@ -324,7 +324,7 @@ const PostPicContainer = styled.label`
 const PostPic = styled.input`
   position: relative;
   opacity: 0;
-  z-index: 0;
+  z-index: 3;
   max-width: 29px;
   max-height: 35px;
   top: 28px;
