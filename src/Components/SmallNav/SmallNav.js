@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { color, font, device } from "Styles/Common.js";
 import wadizlogo from "Images/wadiz-logo.png";
 import searcher from "Images/searcher.png";
+import bell from "Images/bell.png";
 
-class NavBar extends Component {
+class SmallNav extends Component {
   handleClick = e => {
     this.props.history.push(`${e.target.name}`);
   };
@@ -16,26 +17,11 @@ class NavBar extends Component {
           <Logo onClick={this.handleClick} name="/">
             <LogoImg />
           </Logo>
-          <Icon>
-            <List>
-              <ListItem>리워드</ListItem>
-            </List>
-            <List>
-              <ListItem>더보기</ListItem>
-            </List>
-          </Icon>
+          <Icon></Icon>
         </ContainerL>
         <ContainerR>
-          <SearchBtn></SearchBtn>
-          <LoginBtn onClick={this.handleClick} name="/login">
-            로그인
-          </LoginBtn>
-          <LoginBtn onClick={this.handleClick} name="/signup">
-            회원가입
-          </LoginBtn>
-          <OpenBtn onClick={this.handleClick} name="/maker">
-            리워드오픈 신청하기
-          </OpenBtn>
+          <SearchBtn />
+          <BellBtn />
         </ContainerR>
       </Header>
     );
@@ -43,25 +29,18 @@ class NavBar extends Component {
 }
 
 const Header = styled.header`
-  @media ${device.large} {
-    position: relative;
-    border-bottom: 1px solid #f0f2f5;
-    padding: 0 80px;
-    height: 56px;
-    text-align: left;
+  @media ${device.smallMin} {
+    padding: 0 27px 0 28px;
   }
+  position: relative;
+  top: 0;
+  z-index: 9998;
+  background-color: #fff;
+  width: 100%;
+  height: 48px;
+  text-align: center;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  padding: 0 80px;
-  border-bottom: 1px solid #f0f2f5;
-  height: 56px;
-  font-size: ${font.size};
-  @media ${device.large} {
-    display: none;
-  }
 `;
 
 const ContainerL = styled.div`
@@ -92,15 +71,6 @@ const Icon = styled.ul`
   cursor: pointer;
 `;
 
-const List = styled.li`
-  padding: 0px 16px;
-`;
-
-const ListItem = styled.span`
-  font-size: 15px;
-  font-weight: normal;
-`;
-
 const ContainerR = styled.div`
   display: inline-flex;
   justify-content: space-between;
@@ -123,30 +93,19 @@ const SearchBtn = styled.button`
   }
 `;
 
-const LoginBtn = styled.button`
+const BellBtn = styled.button`
+  width: 24px;
+  height: 24px;
   border: none;
-  padding: 0px 8px;
   cursor: pointer;
-  font-size: inherit;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: ${color.white};
+  background-image: url(${bell});
   &:focus {
     outline: none;
   }
 `;
 
-const OpenBtn = styled.button`
-  font-size: inherit;
-  padding: 7px 16px;
-  margin: 0px 16px;
-  cursor: pointer;
-  color: ${color.blue};
-  background-color: ${color.white};
-  border-radius: 5px;
-  border: 1px solid ${color.blue};
-  &:hover {
-    color: ${color.white};
-    background-color: ${color.blue};
-  }
-`;
-
-export default withRouter(NavBar);
+export default withRouter(SmallNav);

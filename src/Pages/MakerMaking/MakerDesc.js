@@ -1,6 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+const MakerDesc = () => {
+  return (
+    <MakerBar>
+      <MakerTitle>메이커 정보</MakerTitle>
+      <MakerDescription>
+        먼저 메이커 정보를 입력하세요. 작성 후 펀딩 준비를 위한 콘텐츠 작성이
+        가능합니다.
+      </MakerDescription>
+    </MakerBar>
+  );
+};
+
 const MakerBar = styled.div`
   margin-top: 60px;
   margin-bottom: 32px;
@@ -20,17 +32,5 @@ const MakerDescription = styled.p`
   font-weight: 300;
 }
 `;
-
-const MakerDesc = () => {
-  return (
-    <MakerBar>
-      <MakerTitle>메이커 정보</MakerTitle>
-      <MakerDescription>
-        먼저 메이커 정보를 입력하세요. 작성 후 펀딩 준비를 위한 콘텐츠 작성이
-        가능합니다.
-      </MakerDescription>
-    </MakerBar>
-  );
-};
 
 export default MakerDesc;

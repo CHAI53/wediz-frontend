@@ -17,5 +17,8 @@ export const font = {
 export const device = {
   large: "only screen and (max-width: 1097px)",
   middle: "only screen and (max-width: 960px)",
-  small: "only screen and (max-width: 769px)"
+  small: "only screen and (max-width: 769px)",
+  largeMin: "only screen and (min-width: 1097px)",
+  middleMin: "only screen and (min-width: 960px)",
+  smallMin: "only screen and (min-width: 769px)"
 };
