@@ -34,8 +34,8 @@ export class RewardList extends Component {
     stock: [],
     price: [],
     check: [],
-    total: 0,
-    rewardlist: ""
+    seller_product_number: [],
+    total: 0
   };
 
   componentDidMount = () => {
@@ -54,7 +54,7 @@ export class RewardList extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    const { data, sponsor, check, quantity, price } = this.state;
+    const { data } = this.state;
     if (prevState.data !== data) {
       const { data } = this.state;
       let quantity = [];
@@ -171,14 +171,16 @@ export class RewardList extends Component {
     this.props.history.push("/purchase");
     fetch(`${API_SH}/data/funding`, {
       method: "post",
-      header: {
+      headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
       },
       body: JSON.stringify({
         data: selected_data,
         sponsor
       })
-    });
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
     console.log(selected_data);
     window.localStorage.setItem("data", JSON.stringify(selected_data));
     window.localStorage.setItem("sponsor", this.state.sponsor);
@@ -188,7 +190,6 @@ export class RewardList extends Component {
     const {
       show,
       sponsor,
-      total,
       fundContext,
       quantity,
       check,
@@ -229,6 +230,7 @@ export class RewardList extends Component {
                     index={index}
                     price={e.price}
                     name={e.name}
+                    option={e.option}
                     stock={e.stock}
                     delivery_fee={e.delivery_fee}
                     date={e.scheduled_date}

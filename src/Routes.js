@@ -8,6 +8,7 @@ import MyProfile from "./Pages/MyProfile";
 import RewardList from "./Pages/RewardList";
 import Purchase from "./Pages/Purchase";
 import MakerStudioPage from "./Pages/MakerStudioPage";
+
 class Routes extends React.Component {
   render() {
     return (
