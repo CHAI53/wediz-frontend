@@ -1,7 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 import MakerLogo from "Images/makerstudiologo.png";
 import ImgCompany from "Images/imgcompany.png";
-import styled from "styled-components";
 
 class HeaderForMakerStudio extends React.Component {
   render() {

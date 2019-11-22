@@ -10,103 +10,7 @@ class CategoryForMakerStudio extends React.Component {
   state = {
     id: ""
   };
-  // state = {
-  //     checkClicked: ""
-  // }
-  // ===========================nav바 펼치기 숨기기 로직 구현 no.1에 필요했던 constructor===============================================
-  // const { show } = props
-  // const { control } = control
 
-  // constructor(props) {
-  //     super(props)
-  //     this.state = {
-  //         id: "",
-  //         // list1: false,
-  //         // list2: false,
-  //         // list3: false,
-  //         // list4: false,
-  //         // list5: false,
-  //         displayOption: false
-  //         // checkStatus: false,
-  //     }
-  // }
-  // ===========================nav바 펼치기 숨기기 로직 구현 no.1에 필요했던 constructor===============================================
-  // ===========================nav바 펼치기 숨기기 로직 구현 no.1===============================================
-  // handleChange = (e) => {
-  //     console.log(this.props.info.title, "이벤트헨들러의 state는===", this.state)
-  //     console.log(this.props.info.title, "이벤트헨들러의 props는===", this.props.open)
-
-  // this.setState((state) => ({
-  //=========================== 삼항연산자 대신 논리not연산자 사용===========================
-  //     displayOption: !this.state.displayOption
-  //=========================== 삼항연산자 대신 논리not연산자 사용===========================
-  // })
-  //         , () => {
-  //             {
-  //                 (this.props.open !== this.state.displayOption) &&
-  //                     this.setState((state) =>
-  //                         ({
-
-  //                             displayOption: this.state.displayOption ? false : true,
-  //                         })
-  //                         // checkStatus: this.state.checkStatus ? false : true
-  //                     )
-
-  //             }
-  //             this.props.control(this.state.displayOption)
-  //         }
-  //     )
-
-  // }
-  // ===========================nav바 펼치기 숨기기 로직 구현 no.1===============================================
-
-  // ===========================lifecycle 확인용===============================================
-  // componentWillMount() {
-  //     console.log(this.props.info.title, 'componentWillMount');
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-
-  // componentDidMount() {
-  //     console.log(this.props.info.title, 'componentDidMount');
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //     console.log(this.props.info.title, 'componentWillReceiveProps');
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //     console.log(this.props.info.title, 'shouldComponentUpdate');
-  //     return true / false;
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-
-  // componentWillUpdate(nextProps, nextState) {
-  //     console.log(this.props.info.title, 'componentWillUpdate');
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //     console.log(this.props.info.title, 'componentDidUpdate');
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-
-  // componentWillUnmount() {
-  //     console.log(this.props.info.title, 'componentWillUnmount');
-  //     console.log(this.props.info.title, "state는===", this.state)
-  //     console.log(this.props.info.title, "props는===", this.props.open)
-  // }
-  // ===========================lifecycle 확인용===============================================
-
-  // console.log(this.props.info.title, "렌더의 state는===", this.state)
-  // console.log(this.props.info.title, "렌더의 props는===", this.props.open)
   handleDetectClick = event => {
     console.log("handleDetectClick");
     // const check = this.state
@@ -123,10 +27,6 @@ class CategoryForMakerStudio extends React.Component {
     // )
   };
   render() {
-    console.log("handleDetectClick", this.state.id);
-    console.log("show는===", this.props.show);
-    console.log("unfold는===", this.props.unfold);
-    console.log("info는===", this.props.info);
     const {
       title,
       optionZero,
@@ -175,32 +75,35 @@ class CategoryForMakerStudio extends React.Component {
             >
               {optionZero}
             </Option>
-            <Link to="/maker/studio/funding" style={{ textDecoration: "none" }}>
+
+            <Option
+              name="optionOne"
+              id={optionOneId}
+              onClick={this.handleDetectClick}
+              hightlight={highlight === optionOneId}
+            >
+              {optionOne}
+            </Option>
+            <Link to="/maker/funding/story" style={{ textDecoration: "none" }}>
               <Option
-                name="optionOne"
-                id={optionOneId}
+                name="optionTwo"
+                id={optionTwoId}
                 onClick={this.handleDetectClick}
-                hightlight={highlight === optionOneId}
+                hightlight={highlight === optionTwoId}
               >
-                {optionOne}
+                {optionTwo}
               </Option>
             </Link>
-            <Option
-              name="optionTwo"
-              id={optionTwoId}
-              onClick={this.handleDetectClick}
-              hightlight={highlight === optionTwoId}
-            >
-              {optionTwo}
-            </Option>
-            <Option
-              name="optionThree"
-              id={optionThreeId}
-              onClick={this.handleDetectClick}
-              hightlight={highlight === optionThreeId}
-            >
-              {optionThree}
-            </Option>
+            <Link to="/maker/funding/design" style={{ textDecoration: "none" }}>
+              <Option
+                name="optionThree"
+                id={optionThreeId}
+                onClick={this.handleDetectClick}
+                hightlight={highlight === optionThreeId}
+              >
+                {optionThree}
+              </Option>
+            </Link>
             <Option
               name="optionFour"
               id={optionFourId}
