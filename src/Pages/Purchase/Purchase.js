@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { FundContext } from "Datas/CompanyData";
-import { API_SH } from "Datas/Config.js";
+import { API_TS } from "Datas/Config.js";
 import NavBar from "Components/NavBar";
 import RewardHeader from "Components/RewardHeader";
 import ProgressCircle from "Components/ProgressCircle";
@@ -44,7 +44,7 @@ class Purchase extends Component {
     if (data.length === 0) {
       this.props.history.push("/rewardlist");
     } else {
-      fetch(`${API_SH}/data/user.json`)
+      fetch(`${API_TS}/order`)
         .then(res => res.json())
         .then(res => {
           this.setState({
@@ -133,7 +133,7 @@ class Purchase extends Component {
       totalAgree &&
       necessaryCheck
     ) {
-      fetch(`${API_SH}/data/user.json`, {
+      fetch(`${API_TS}/basket`, {
         method: "post",
         header: window.localStorage.getItem("VALID_TOKEN"),
         body: JSON.stringify({
@@ -155,7 +155,7 @@ class Purchase extends Component {
         });
       let keyToRemove = ["data", "sponsor"];
       keyToRemove.forEach(key => window.localStorage.removeItem(key));
-      this.props.history.push("/rewardlist");
+      this.props.history.push("/");
     } else {
       alert("필수 항목을 입력해주시거나 체크해주시기 바랍니다.");
     }

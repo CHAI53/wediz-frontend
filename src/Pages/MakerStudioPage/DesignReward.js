@@ -9,7 +9,7 @@ class DesignReward extends Component {
   render() {
     const { openModal, data, deleteReward, handlePost } = this.props;
     return (
-      <>
+      <OuterContainer>
         <Container>
           <Category>펀딩준비 > 리워드 설계</Category>
           <LoginSignupHeader size="40px">리워드 설계</LoginSignupHeader>
@@ -67,16 +67,19 @@ class DesignReward extends Component {
             </BigLoginButton>
           </ButtonContainer>
         </Container>
-      </>
+      </OuterContainer>
     );
   }
 }
 
 export default DesignReward;
 
+const OuterContainer = styled.div`
+  width: 100%;
+`;
+
 const Container = styled.div`
   padding: 40px 66px;
-  position: ${props => props.position || ""};
 `;
 const Category = styled.div`
   font-size: 13px;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import { API_SH } from "Datas/Config.js";
+import { API_TS } from "Datas/Config.js";
 import NavBar from "Components/NavBar";
 import ProgressCircle from "Components/ProgressCircle";
 import BigLoginButton from "Components/BigLoginButton";
@@ -39,7 +39,7 @@ export class RewardList extends Component {
   };
 
   componentDidMount = () => {
-    fetch(`${API_SH}/fund/reward`, {
+    fetch(`${API_TS}/fund/reward`, {
       headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
       }
@@ -169,7 +169,7 @@ export class RewardList extends Component {
       }
     });
     this.props.history.push("/purchase");
-    fetch(`${API_SH}/data/funding`, {
+    fetch(`${API_TS}/order/`, {
       method: "post",
       headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
