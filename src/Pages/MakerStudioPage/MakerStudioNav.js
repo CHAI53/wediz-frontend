@@ -64,14 +64,6 @@ class MakerStudioNav extends React.Component {
 
   render() {
     // console.log("부모에서 넘어가는 변경할 props", this.state.distinguisher)
-    console.log(
-      "is setState working when click each ticket?===",
-      this.state.detect
-    );
-    console.log(
-      "is setState working when click each section?===",
-      this.state.address
-    );
     const { category, detect, address, sectionOne } = this.state;
     const navCategory = category.map(data => (
       <CategoryForMakerStudio

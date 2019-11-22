@@ -5,7 +5,51 @@ import { color, font, device } from "Styles/Common.js";
 import wadizlogo from "Images/wadiz-logo.png";
 import searcher from "Images/searcher.png";
 
+class NavBar extends Component {
+  handleClick = e => {
+    this.props.history.push(`${e.target.name}`);
+  };
+  render() {
+    return (
+      <Header>
+        <ContainerL>
+          <Logo onClick={this.handleClick} name="/">
+            <LogoImg />
+          </Logo>
+          <Icon>
+            <List>
+              <ListItem>리워드</ListItem>
+            </List>
+            <List>
+              <ListItem>더보기</ListItem>
+            </List>
+          </Icon>
+        </ContainerL>
+        <ContainerR>
+          <SearchBtn></SearchBtn>
+          <LoginBtn onClick={this.handleClick} name="/login">
+            로그인
+          </LoginBtn>
+          <LoginBtn onClick={this.handleClick} name="/signup">
+            회원가입
+          </LoginBtn>
+          <OpenBtn onClick={this.handleClick} name="/maker">
+            리워드오픈 신청하기
+          </OpenBtn>
+        </ContainerR>
+      </Header>
+    );
+  }
+}
+
 const Header = styled.header`
+  @media ${device.large} {
+    position: relative;
+    border-bottom: 1px solid #f0f2f5;
+    padding: 0 80px;
+    height: 56px;
+    text-align: left;
+  }
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,9 +90,6 @@ const Icon = styled.ul`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-size: 19px;
-  font-weight: bold;
-  margin-right: auto;
 `;
 
 const List = styled.li`
@@ -107,42 +148,5 @@ const OpenBtn = styled.button`
     background-color: ${color.blue};
   }
 `;
-
-class NavBar extends Component {
-  handleClick = e => {
-    this.props.history.push(`${e.target.name}`);
-  };
-  render() {
-    return (
-      <Header>
-        <ContainerL>
-          <Logo onClick={this.handleClick} name="/">
-            <LogoImg />
-          </Logo>
-          <Icon>
-            <List>
-              <ListItem>리워드</ListItem>
-            </List>
-            <List>
-              <ListItem>더보기</ListItem>
-            </List>
-          </Icon>
-        </ContainerL>
-        <ContainerR>
-          <SearchBtn></SearchBtn>
-          <LoginBtn onClick={this.handleClick} name="/login">
-            로그인
-          </LoginBtn>
-          <LoginBtn onClick={this.handleClick} name="/signup">
-            회원가입
-          </LoginBtn>
-          <OpenBtn onClick={this.handleClick} name="/maker">
-            리워드오픈 신청하기
-          </OpenBtn>
-        </ContainerR>
-      </Header>
-    );
-  }
-}
 
 export default withRouter(NavBar);

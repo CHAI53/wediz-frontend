@@ -1,6 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { font } from "Styles/Common.js";
+
+class MakerSelection extends Component {
+  state = {
+    value: ""
+  };
+
+  selectChange = e => {
+    this.setState = {
+      value: e.target.value
+    };
+  };
+
+  render() {
+    console.log(this.state.value, "vvv");
+    return (
+      <>
+        <MakerLabel>개인 · 사업자 구분</MakerLabel>
+        <SelectionWrapper>
+          <MakerSelect onChange={e => this.selectChange(e)}>
+            <option value="" hidden>
+              사업자 구분 선택
+            </option>
+            <option value="개인">개인</option>
+            <option value="개인사업자">개인사업자</option>
+            <option value="법인사업자">법인사업자</option>
+          </MakerSelect>
+        </SelectionWrapper>
+      </>
+    );
+  }
+}
 
 const MakerLabel = styled.label`
   display: block;
@@ -28,7 +59,7 @@ const SelectionWrapper = styled.div`
 `;
 
 const MakerSelect = styled.select`
-  align-itmes: center;
+  align-items: center;
   justify-content: center;
   margin: 0;
   outline: none;
@@ -50,23 +81,5 @@ const MakerSelect = styled.select`
     color: rgba(0, 0, 0, 0.87);
   }
 `;
-
-const MakerSelection = () => {
-  return (
-    <div>
-      <MakerLabel>개인 · 사업자 구분</MakerLabel>
-      <SelectionWrapper>
-        <MakerSelect>
-          <option value="" hidden>
-            사업자 구분 선택
-          </option>
-          <option value="1">개인</option>
-          <option value="2">개인사업자</option>
-          <option value="3">법인사업자</option>
-        </MakerSelect>
-      </SelectionWrapper>
-    </div>
-  );
-};
 
 export default MakerSelection;
