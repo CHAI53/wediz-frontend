@@ -46,9 +46,6 @@ const Icon = styled.ul`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-size: 19px;
-  font-weight: bold;
-  margin-right: auto;
 `;
 
 const List = styled.li`

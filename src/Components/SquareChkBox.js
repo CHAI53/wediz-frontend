@@ -38,17 +38,17 @@ const Input = styled.input`
   -webkit-appearance: none;
   border: 1px solid #efefef;
   outline: none;
-  transition: 0.4s
+  transition: 0.4s;
   margin-right: 5px;
   cursor: pointer;
   border-radius: ${props => props.radius || ""};
   :hover {
-    border: 1px solid ${color.blue}
+    border: 1px solid ${color.blue};
   }
   ::before {
     display: inline-block;
     content: "";
-    position: relative
+    position: relative;
     left: 0;
     top: 0;
     width: 20px;
@@ -56,7 +56,6 @@ const Input = styled.input`
     border-right: 1px solid #fff;
     border-bottom: 1px solid #fff;
     transition: all 0.4s;
-    border-radius: ${props => props.radius || ""};
   }
   :checked::before {
     position: absolute;
@@ -71,14 +70,14 @@ const Input = styled.input`
 
 const Span = styled.span`
   color: ${props => props.textColor || ""};
-  transition: color 0.2s
+  transition: color 0.2s;
   cursor: pointer;
   ::before {
     content: "";
     position: absolute;
     width: 5px;
     height: 10px;
-    border-right:1px solid #fff;
+    border-right: 1px solid #fff;
     border-bottom: 1px solid #fff;
     ${props =>
       props.chungRyulColor &&
