@@ -1,12 +1,20 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { color } from "Styles/Common.js";
 
-const SquareChkBox = ({ children, textColor, checkedColor, ...props }) => {
+const SquareChkBox = ({
+  chungRyulColor,
+  children,
+  textColor,
+  checkedColor,
+  ...props
+}) => {
   return (
     <Label checkedColor={checkedColor}>
       <Input type="checkbox" {...props} />
-      <Span textColor={textColor}>{children}</Span>
+      <Span textColor={textColor} chungRyulColor>
+        {children}
+      </Span>
     </Label>
   );
 };
@@ -70,8 +78,13 @@ const Span = styled.span`
     position: absolute;
     width: 5px;
     height: 10px;
-    border-right: 1px solid #fff;
+    border-right:1px solid #fff;
     border-bottom: 1px solid #fff;
+    ${props =>
+      props.chungRyulColor &&
+      css`
+        border: none;
+      `}
     left: 10px;
     top: 8px;
     transform: translate(-50%, -50%) rotateZ(40deg);

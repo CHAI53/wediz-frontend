@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { categoryList } from "Datas/Config.js";
-import SquareChkBox from "Components/SquareChkBox";
+import SquareChkBox from "Components/SquareChkBox.js";
 
 const InterestList = props => {
   return (
