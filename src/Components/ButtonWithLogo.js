@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import BigLoginButton from "Components/BigLoginButton";
+import BigLoginButton from "Components/BigLoginButton.js";
 
 const ButtonWithLogo = ({ children, ...props }) => {
   return (

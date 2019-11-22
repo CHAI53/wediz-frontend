@@ -6,7 +6,7 @@ import axios from "axios";
 import CenterContainer from "Components/CenterContainer.js";
 import FileUpload from "Components/FileUpload.js";
 import LoginSignupHeader from "Components/LoginSignupHeader.js";
-import BigLoginButton from "Components/BigLoginButton";
+import BigLoginButton from "Components/BigLoginButton.js";
 import WrongMessage from "Components/WrongMessage.js";
 import SmallTitle from "./SmallTitle";
 import UserInfo from "./UserInfo";
@@ -46,6 +46,7 @@ class MyProfile extends Component {
     const formData = new FormData();
     if (selectedFile) {
       formData.append("photo", selectedFile, selectedFile.name);
+      console.log(formData);
       axios
         .post(`${API_TS}/account/modifyprofilephoto`, formData, {
           headers: {
