@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ButtonWithLogo from "Components/ButtonWithLogo";
+import ButtonWithLogo from "Components/ButtonWithLogo.js";
 import kakaoLogo from "Images/kakao-icon.png";
 import googleLogo from "Images/google-icon.png";
 

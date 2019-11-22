@@ -3,6 +3,14 @@ import { font } from "Styles/Common.js";
 import styled from "styled-components";
 import wadizlogo from "Images/wadiz-logo.png";
 
+const MakerNav = () => {
+  return (
+    <NavBar>
+      <Logo />
+    </NavBar>
+  );
+};
+
 const NavBar = styled.div`
   display: flex;
   align-items: center;
@@ -22,13 +30,5 @@ const Logo = styled.a`
   background-repeat: no-repeat;
   background-image: url(${wadizlogo});
 `;
-
-const MakerNav = () => {
-  return (
-    <NavBar>
-      <Logo />
-    </NavBar>
-  );
-};
 
 export default MakerNav;

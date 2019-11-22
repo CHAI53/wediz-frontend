@@ -22,11 +22,9 @@ class Routes extends React.Component {
           <Route exact path="/myprofile" component={MyProfile} />
           <Route exact path="/rewardlist" component={RewardList} />
           <Route exact path="/purchase" component={Purchase} />
-          <Route exact path="/funding" component={MakerStudioPage} />
         </Switch>
       </Router>
     );
   }
 }
-
 export default Routes;

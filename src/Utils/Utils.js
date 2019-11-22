@@ -3,3 +3,7 @@ export const changeValue = e => {
     key: e.target.value
   });
 };
+
+export const isUserLoggedIn = () => {
+  return localStorage.getItem("VALID_TOKEN") !== null;
+};

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { API_TS } from "Datas/Config";
-import InputBox from "Components/InputBox";
-import LoginSignupHeader from "Components/LoginSignupHeader";
+import InputBox from "Components/InputBox.js";
+import LoginSignupHeader from "Components/LoginSignupHeader.js";
 import WrongMessage from "Components/WrongMessage";
-import BigLoginButton from "Components/BigLoginButton";
+import BigLoginButton from "Components/BigLoginButton.js";
 import LoginAction from "./LoginAction";
-import ButtonWithLogo from "Components/ButtonWithLogo";
+import ButtonWithLogo from "Components/ButtonWithLogo.js";
 import SocialLogin from "./SocialLogin";
 import TextWithLine from "./TextWithLine";
 import GoToSignup from "./GoToSignup";
@@ -22,7 +22,7 @@ class Login extends Component {
   };
 
   goToMain = () => {
-    this.props.history.push("/main");
+    this.props.history.push("/");
   };
 
   handleChange = e => {

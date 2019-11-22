@@ -2,16 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { API_SH } from "Datas/Config.js";
+import navCategoryForMakerStudio from "Datas/CategoryForMakerStudio.js";
 import AddRewardModal from "./AddRewardModal";
 import HeaderForMakerStudio from "./HeaderForMakerStudio";
-import MainArticle from "./MainArticle";
+import MakerStudioNav from "./MakerStudioNav.js";
+import FundingStory from "Components/FundingStory.js";
 import DesignReward from "./DesignReward";
-import BaseInfo from "./BaseInfo";
 
-class MakerStudio extends React.Component {
+class MakerStudioPage extends React.Component {
   state = {
     showRewardAddModal: false,
-    reward: []
+    reward: [],
+    category: navCategoryForMakerStudio.category,
+    detect: "funding",
+    list: navCategoryForMakerStudio.list1
+  };
+
+  handleAddress = data => {
+    console.log("handleAddress 작동");
+    this.setState({
+      address: data
+    });
   };
 
   openModal = () => {
@@ -23,13 +34,6 @@ class MakerStudio extends React.Component {
   closeModal = () => {
     this.setState({
       showRewardAddModal: false
-    });
-  };
-
-  handleReward = (price, name, introduction, option, stock, scheduled_date) => {
-    const { reward } = this.state;
-    this.setState({
-      reward
     });
   };
 
@@ -88,7 +92,10 @@ class MakerStudio extends React.Component {
         />
         <HeaderForMakerStudio />
         <MainArticleContainer>
-          <MainArticle />
+          <MakerStudioNav
+            navCategory={this.state}
+            getAddress={this.handleAddress}
+          />
           {this.props.match.params.id === "design" ? (
             <DesignReward
               showModal={showRewardAddModal}
@@ -97,8 +104,8 @@ class MakerStudio extends React.Component {
               deleteReward={this.deleteReward}
               data={reward}
             />
-          ) : "baseInfo" ? (
-            <BaseInfo />
+          ) : "story" ? (
+            <FundingStory />
           ) : (
             ""
           )}
@@ -108,8 +115,11 @@ class MakerStudio extends React.Component {
   }
 }
 
-export default withRouter(MakerStudio);
-
-const MainArticleContainer = styled.main`
+export default withRouter(MakerStudioPage);
+const MainArticleContainer = styled.div`
+  width: 80%;
+  background-color: white;
   display: flex;
+  position: relative;
+  top: 55px;
 `;

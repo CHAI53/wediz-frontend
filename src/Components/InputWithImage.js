@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import InputBox from "Components/InputBox";
+import InputBox from "Components/InputBox.js";
 
 const InputWithImage = props => {
   return (

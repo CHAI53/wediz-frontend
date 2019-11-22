@@ -12,7 +12,7 @@ class HeaderForMakerStudio extends React.Component {
         </HeaderLeft>
         <HeaderCenter>
           <CompanyLogo></CompanyLogo>
-          <div>WEDIZ</div>
+          <div>위디즈</div>
         </HeaderCenter>
         <HeaderRight>
           <ButtonContainer>
@@ -28,7 +28,6 @@ class HeaderForMakerStudio extends React.Component {
 export default HeaderForMakerStudio;
 
 const Container = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -36,6 +35,9 @@ const Container = styled.div`
   padding: 0 24px;
   border-bottom: 1px solid #e5e5e5;
   align-items: stretch;
+  position: fixed;
+  background-color: white;
+  z-index: 2;
 `;
 
 const HeaderLeft = styled.div`
