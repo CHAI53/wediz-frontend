@@ -15,5 +15,5 @@ export default SingleImage;
 const ImageForSlider = styled.img`
   width: 10%
   float: left;
-  height: 400px;
+  height: 500px;
 `;

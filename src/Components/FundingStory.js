@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-// import axios from "axios";
+import axios from "axios";
 import FundingStoryIntroForm from "./FundingStoryIntroForm";
 import FundingMockUpData from "Datas/CategoryForMakerStudio.js";
 import StorySummary from "./StorySummary.js";
@@ -12,7 +12,8 @@ class FundingStory extends Component {
     super();
     this.state = {
       fundingCategory: FundingMockUpData.list1,
-      summaryInput: ""
+      summaryInput: "",
+      is_agreed: true
     };
   }
 
@@ -22,19 +23,37 @@ class FundingStory extends Component {
     });
   };
 
-  handleSendSummary = summary => {
-    console.log("handleSave is working", summary);
+  handleSendSummary = () => {
+    console.log("handleSave is working");
     // axios로 post하면 끝
-    // const htmlCode = window.locaStorage.getItem("content")
-    // Axios.post('10.58.2.201:8004/user/signin',{
-    //   params: {
-    // content: htmlCode
-    //   }
-    // })
-    //   .then(res => {
-    //     res.message === "success" &&
-    //console.log("res from server===", res)
-    // });
+    const htmlCode = window.localStorage.getItem("content");
+    const token = window.localStorage.getItem("VALID_TOKEN");
+    console.log(htmlCode);
+    fetch("http://10.58.6.160:8000/fund/story", {
+      method: "post",
+      headers: {
+        Authorization: window.localStorage.getItem("VALID_TOKEN")
+      },
+      body: JSON.stringify({
+        summary: this.state.summaryInput,
+        is_agreed: this.state.is_agreed,
+        context: htmlCode
+      })
+    })
+      // axios
+      //   .post("http://10.58.6.160:8000/fund/story", {
+      //     headers: {
+      //       Authorization: token
+      //     },
+      //     params: {
+      //       summary: this.state.summaryInput,
+      //       is_agreed: this.state.is_agreed,
+      //       context: htmlCode
+      //     }
+      //   })
+      .then(res => {
+        res.message === "success" && console.log("res from server===", res);
+      });
   };
 
   render() {
@@ -58,9 +77,7 @@ class FundingStory extends Component {
             <FundingStoryIntroForm />
           </div>
           <StorySummary pull={this.handlePullSummary} />
-          <ProjectStory
-            sendSummary={() => this.handleSendSummary(summaryInput)}
-          />
+          <ProjectStory sendSummary={this.handleSendSummary} />
         </StoryContianer>
       </WholeContainer>
     );

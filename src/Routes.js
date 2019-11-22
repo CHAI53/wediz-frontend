@@ -8,7 +8,7 @@ import MyProfile from "./Pages/MyProfile";
 import RewardList from "./Pages/RewardList";
 import Purchase from "./Pages/Purchase";
 import MakerStudioPage from "./Pages/MakerStudioPage";
-
+import RewardDetailPage from "./Components/RewardDetailPage.js";
 class Routes extends React.Component {
   render() {
     return (
@@ -22,6 +22,7 @@ class Routes extends React.Component {
           <Route exact path="/myprofile" component={MyProfile} />
           <Route exact path="/rewardlist" component={RewardList} />
           <Route exact path="/purchase" component={Purchase} />
+          <Route exact path="/detail" component={RewardDetailPage} />
         </Switch>
       </Router>
     );

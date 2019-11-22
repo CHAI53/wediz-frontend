@@ -29,6 +29,19 @@ class RewardDetailPage extends Component {
       htmlTag: ""
     };
   }
+  //   componentDidMount() {
+  //     axios(
+  //       `http://10.58.2.241:8000/restaurant/category/${cat_id}?order_method=review_avg&pageNum=0`
+  //     ).then(res => {
+  //       console.log("date from fetch===", res);
+  //       this.setState({
+  //         restaurants: res.data.restaurants,
+  //         additionalRenderNum: 0
+  //       });
+  //     });
+
+  //     console.log("paramRendered===", this.props.match);
+  //   }
   render() {
     return (
       <>

@@ -1,23 +1,330 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { color } from "Styles/Common.js";
 // import "./MainArticleForDetailPage.scss";
 import SingleImage from "./SingleImage.js";
+import RewardListDisplayed from "./RewardListDisplayed.js";
 
 class MainArticleForDetailPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reward: [
+        {
+          id: "1",
+          name: "운동화1",
+          price: "100000",
+          introduction: "아주 편해용 ",
+          stock: "100",
+          scheduled_date: "내일",
+          option: "블랙"
+        },
+        {
+          id: "2",
+          name: "운동화1",
+          price: "100000",
+          introduction: "아주 편해용 ",
+          stock: "100",
+          scheduled_date: "내일",
+          option: "화이트"
+        },
+        {
+          id: "2",
+          name: "운동화1",
+          price: "100000",
+          introduction: "아주 편해용 ",
+          stock: "100",
+          scheduled_date: "내일",
+          option: "화이트"
+        },
+        {
+          id: "2",
+          name: "운동화1",
+          price: "100000",
+          introduction: "아주 편해용 ",
+          stock: "100",
+          scheduled_date: "내일",
+          option: "화이트"
+        }
+      ]
+    };
+  }
+
+  //   componentDidMount() {
+  //     axios("http://10.58.5.176:8000/fund/reward")
+  //     .then(res => {
+  //         console.log("date from fetch===", res)
+  //         this.setState({
+  //         })
+  //     })
+
+  // console.log("paramRendered===", this.props.match)
+
+  //   }
   render() {
     const allImage = this.props.photo.map((src, index) => (
       <SingleImage src={src} key={index} />
     ));
+    const rewardList = this.state.reward.map((reward, index) => (
+      <RewardListDisplayed key={index} data={reward} />
+    ));
     console.log(this.props.length);
     return (
-      <MainArticleContainer>
+      <>
         <ImageSliderContainer length={this.props.length}>
           <ImageSlider>
-            <Figure length={this.props.length}>{allImage}</Figure>
+            <Figure length={this.props.length}>
+              {this.props.photo && allImage}
+            </Figure>
+            <RewardContainer>{this.state.reward && rewardList}</RewardContainer>
           </ImageSlider>
         </ImageSliderContainer>
-        <TextContainer>asdadasdasdasd</TextContainer>
-      </MainArticleContainer>
+
+        <MainArticleContainer>
+          <TextContainer>
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here display props of html code in here display props of html code
+            in here display props of html code in here display props of html
+            code in here display props of html code in here display props of
+            html code in here display props of html code in here display props
+            of html code in here display props of html code in here display
+            props of html code in here display props of html code in here
+            display props of html code in here display props of html code in
+            here
+          </TextContainer>
+        </MainArticleContainer>
+      </>
     );
   }
 }
@@ -25,11 +332,25 @@ class MainArticleForDetailPage extends Component {
 export default MainArticleForDetailPage;
 const MainArticleContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  width: 100%;
+  position: relative;
 `;
-
+const RewardContainer = styled.div`
+  width: 30%;
+  padding: 30px 30px 30px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 0;
+`;
 const TextContainer = styled.div`
-  margin-top: 50px;
+  /* margin-top: 20px; */
+  width: 63%;
+  margin-right: 52px;
+  margin-top: -150px;
+  z-index: -1;
+  position: relative;
+  top: -992px;
 `;
 
 const ImageSliderContainer = styled.div`
@@ -96,13 +417,15 @@ const ImageSliderContainer = styled.div`
       left: 0%;
     }
   }
-  /* position: sticky;
-  top: 300px; */
-  width: 40%;
+  position: sticky;
+  top: 0;
+  width: 97%;
   margin-top: 50px;
 `;
 const ImageSlider = styled.div`
   overflow: hidden;
+  margin-top: 40px;
+  margin-left: 40px;
 `;
 
 const Figure = styled.figure`
