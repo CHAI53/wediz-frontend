@@ -20,6 +20,7 @@ const Input = styled.input`
   padding: 0 0.94118em;
   vertical-align: middle;
   color: rgba(0, 0, 0, 0.84);
+  background-color: ${props => props.background || ""};
   :focus {
     border: 1px solid ${color.blue};
   }

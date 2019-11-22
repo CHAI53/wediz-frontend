@@ -13,6 +13,7 @@ const MakerInput = ({ children, ...props }) => {
         disabled={props.disabled}
         type={props.type}
         value={props.value}
+        background={props.background}
       />
     </MakerName>
   );

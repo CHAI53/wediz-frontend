@@ -19,6 +19,7 @@ class EmailSignup extends Component {
     user_name: "",
     password: "",
     re_password: "",
+    phone_number: "",
     is_agree: false,
     promotion: false,
     email_state: false,
@@ -27,7 +28,7 @@ class EmailSignup extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.re_password !== this.state.re_password) {
+    if (prevState.phone_number !== this.state.phone_number) {
       this.setState({
         is_submit: false
       });
@@ -63,6 +64,7 @@ class EmailSignup extends Component {
       user_name,
       password,
       re_password,
+      phone_number,
       is_agree,
       promotion
     } = this.state;
@@ -70,6 +72,7 @@ class EmailSignup extends Component {
       email &&
       user_name &&
       password &&
+      phone_number &&
       re_password &&
       password === re_password
     ) {
@@ -79,13 +82,17 @@ class EmailSignup extends Component {
           email,
           user_name,
           password,
+          phone_number,
           is_agree,
           promotion
         })
       })
         .then(res => res.json())
         .then(res => {
-          return this.goToLogin();
+          console.log(res);
+          if (res.MESSAGE === "SIGNUP_SUCCESS") {
+            return this.goToLogin();
+          }
         });
     }
   };
@@ -164,6 +171,15 @@ class EmailSignup extends Component {
             ) : (
               ""
             )}
+            <InputWithImage
+              placeholder="휴대폰 번호"
+              imgUrl={lock}
+              margin="15px 0"
+              name="phone_number"
+              onChange={this.handleChange}
+              disabled={!is_verify}
+              type="text"
+            />
             <Promotion
               name="promotion"
               defaultChecked={promotion}
