@@ -1,4 +1,4 @@
-export const API_TS = "http://10.58.6.24:8000";
+export const API_TS = "http://10.58.6.160:8000";
 
 export const categoryList = [
   { id: 1, value: "education_kids", key: "교육, 키즈" },

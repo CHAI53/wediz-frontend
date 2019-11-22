@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { color } from "Styles/Common.js";
 
+const MakerInputBox = ({ ...props }) => {
+  return <Input {...props}></Input>;
+};
+
 const Input = styled.input`
   width: ${props => props.width || "868px"};
   display: ${props => props.display || "block"};
@@ -20,9 +24,5 @@ const Input = styled.input`
     border: 1px solid ${color.blue};
   }
 `;
-
-const MakerInputBox = ({ ...props }) => {
-  return <Input {...props}></Input>;
-};
 
 export default MakerInputBox;

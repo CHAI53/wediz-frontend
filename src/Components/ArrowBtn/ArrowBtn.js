@@ -1,24 +1,71 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { device } from "Styles/Common.js";
+import { color, device } from "Styles/Common.js";
+import slideData from "Components/BigHeader/SlideData";
+
+class ArrowBtn extends Component {
+  constructor() {
+    super();
+    this.state = {
+      i: 0,
+      headline: slideData[0].headline,
+      path: slideData[0].path
+    };
+  }
+
+  moveSlider = (e, point = 1) => {
+    let nextI = this.state.i;
+    nextI += point;
+    clearInterval(this.interval);
+    this.interval = setInterval(() => this.moveSlider(null), 3000);
+    setTimeout(this.interval, 1000);
+
+    if (nextI >= slideData.length) {
+      nextI = 0;
+    }
+    if (nextI < 0) {
+      nextI = slideData.length - 1;
+    }
+    this.setState({
+      i: nextI,
+      headline: slideData[nextI].headline,
+      path: slideData[nextI].path
+    });
+  };
+
+  render() {
+    return (
+      <ArrowBtnWrapper>
+        <ButtonLeft onClick={e => this.moveSlider(e, -1)}>
+          <SpanLeft />
+        </ButtonLeft>
+        <ButtonRight onClick={e => this.moveSlider(e, 1)}>
+          <SpanRight />
+        </ButtonRight>
+      </ArrowBtnWrapper>
+    );
+  }
+}
 
 const ArrowBtnWrapper = styled.div`
+  @media ${device.large} {
+    display: none;
+    right: 0;
+  }
   display: block;
-  position: absolute;
   right: 120px;
+  position: absolute;
   bottom: 0;
   z-index: 10;
   padding: 30px 0;
 `;
 
 const ButtonLeft = styled.button`
-  @media ${device.large} {
-    margin: 0;
-    background: rgba(0, 0, 0, 0.4);
-    width: 40px;
-    height: 40px;
-    right: 64px;
-  }
+  position: relative;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 40px;
+  height: 40px;
   display: inline-block;
   transition: color 0.2s;
   outline: none;
@@ -32,13 +79,11 @@ const ButtonLeft = styled.button`
 `;
 
 const ButtonRight = styled.button`
-  @media ${device.large} {
-    margin: 0;
-    background: rgba(0, 0, 0, 0.4);
-    width: 40px;
-    height: 40px;
-    right: 24px;
-  }
+  position: relative;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 40px;
+  height: 40px;
   display: inline-block;
   transition: color 0.2s;
   outline: none;
@@ -52,48 +97,37 @@ const ButtonRight = styled.button`
 `;
 
 const SpanLeft = styled.span`
-  ::before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    left: 10px;
-    top: 8px;
-    transform: translate(-50%, -50%) rotateZ(45deg);
-    transition: all 0.4s;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid #b5b5b5;
+  border-bottom: 1px solid #b5b5b5;
+  left: 20px;
+  top: 20px;
+  transform: translate(-50%, -50%) rotateZ(135deg);
+  transition: all 0.4s;
+  :hover {
+    border-right: 1px solid ${color.white};
+    border-bottom: 1px solid ${color.white};
   }
 `;
 
 const SpanRight = styled.span`
-  ::before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    left: 10px;
-    top: 8px;
-    transform: translate(-50%, -50%) rotateZ(90deg);
-    transition: all 0.4s;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid #b5b5b5;
+  border-bottom: 1px solid #b5b5b5;
+  left: 15px;
+  top: 20px;
+  transform: translate(-50%, -50%) rotateZ(315deg);
+  transition: all 0.01s;
+  :hover {
+    border-right: 1px solid ${color.white};
+    border-bottom: 1px solid ${color.white};
   }
 `;
-
-class ArrowBtn extends Component {
-  render() {
-    return (
-      <ArrowBtnWrapper>
-        <ButtonLeft>
-          <SpanLeft />
-        </ButtonLeft>
-        <ButtonRight>
-          <SpanRight />
-        </ButtonRight>
-      </ArrowBtnWrapper>
-    );
-  }
-}
 
 export default ArrowBtn;

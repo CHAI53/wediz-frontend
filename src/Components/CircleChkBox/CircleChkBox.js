@@ -2,6 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { color } from "Styles/Common.js";
 
+const CircleChkBox = ({ ...props }) => {
+  return (
+    <Label>
+      <Input type="checkbox" {...props} />
+      <Span></Span>
+    </Label>
+  );
+};
+
 const Label = styled.label`
   display: flex;
   position: relative;
@@ -63,14 +72,5 @@ const Span = styled.span`
     transition: all 0.4s;
   }
 `;
-
-const CircleChkBox = ({ ...props }) => {
-  return (
-    <Label>
-      <Input type="checkbox" {...props} />
-      <Span></Span>
-    </Label>
-  );
-};
 
 export default CircleChkBox;

@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const MakerHelper = ({ children }) => {
+  return <ChangeDesc>{children}</ChangeDesc>;
+};
+
 const ChangeDesc = styled.div`
   line-height: 18px;
   font-size: 13px;
@@ -10,9 +14,5 @@ const ChangeDesc = styled.div`
   margin-bottom: 40px;
   color: ${props => props.color || "#90949c"};
 `;
-
-const MakerHelper = ({ children }) => {
-  return <ChangeDesc>{children}</ChangeDesc>;
-};
 
 export default MakerHelper;

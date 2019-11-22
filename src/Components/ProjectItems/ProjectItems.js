@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+class ProjectItems extends Component {
+  render() {
+    return (
+      <CardWrap>
+        <ButtonWrap>
+          <SmallMenu></SmallMenu>
+        </ButtonWrap>
+      </CardWrap>
+    );
+  }
+}
+
 const CardWrap = styled.li`
   @media screen and (min-width: 960px) {
     float: left;
@@ -16,7 +28,6 @@ const ButtonWrap = styled.div`
   @media screen and (min-width: 960px) {
     right: 25px;
   }
-
   position: absolute;
   right: 10px;
   top: 10px;
@@ -31,17 +42,5 @@ const SmallMenu = styled.button`
   border: none;
   cursor: pointer;
 `;
-
-class ProjectItems extends Component {
-  render() {
-    return (
-      <CardWrap>
-        <ButtonWrap>
-          <SmallMenu></SmallMenu>
-        </ButtonWrap>
-      </CardWrap>
-    );
-  }
-}
 
 export default ProjectItems;

@@ -5,7 +5,7 @@ import { color, font, device } from "Styles/Common.js";
 import wadizlogo from "Images/wadiz-logo.png";
 import searcher from "Images/searcher.png";
 
-class NavBar extends Component {
+class AfterLoginNav extends Component {
   handleClick = e => {
     this.props.history.push(`${e.target.name}`);
   };
@@ -26,7 +26,9 @@ class NavBar extends Component {
           </Icon>
         </ContainerL>
         <ContainerR>
-          <SearchBtn></SearchBtn>
+          <SearchWrap placeholder="어떤 프로젝트를 찾고 계신가요?">
+            <SearchBtn />
+          </SearchWrap>
           <LoginBtn onClick={this.handleClick} name="/login">
             로그인
           </LoginBtn>
@@ -105,6 +107,19 @@ const ContainerR = styled.div`
   font-size: ${font.size};
 `;
 
+const SearchWrap = styled.input`
+  width: 280px;
+  height: 40px;
+  outline: none;
+  background: none;
+  padding-right: 17px;
+  padding-left: 48px;
+  width: 100%;
+  line-height: 24px;
+  font-size: 15px;
+  border-radius: 20px;
+`;
+
 const SearchBtn = styled.button`
   width: 24px;
   height: 24px;
@@ -146,4 +161,4 @@ const OpenBtn = styled.button`
   }
 `;
 
-export default withRouter(NavBar);
+export default withRouter(AfterLoginNav);

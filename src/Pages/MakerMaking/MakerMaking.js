@@ -6,23 +6,8 @@ import MakerDesc from "./MakerDesc";
 import MakerSelection from "./MakerSelection";
 import MakerInput from "./MakerInput";
 import MakerHelper from "./MakerHelper";
-import BigLoginButton from "Components/BigLoginButton/BigLoginButton";
+import BigLoginButton from "Components/BigLoginButton";
 import AgreementChk from "Components/AgreementChk";
-
-const MakerWrapper = styled.div`
-  margin-right: calc(50% - 500px);
-  margin-left: calc(50% - 500px);
-  padding: 40px 66px;
-  height: 100%;
-`;
-
-const MakerForm = styled.form`
-  position: relative;
-`;
-
-const MarginMaker = styled.div`
-  margin-top: 80px;
-`;
 
 class MakerMaking extends Component {
   state = {
@@ -36,8 +21,8 @@ class MakerMaking extends Component {
   };
 
   componentDidMount() {
-    const key = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.BQaYsgMzTzB3FGNyGVccFd5LQqgXmM6zXpLVAA5V8QA`;
-    fetch(`${API_TS}/fund/maker`, {
+    const key = window.localStorage.getItem("VALID_TOKEN");
+    fetch(`${API_TS}/account/maker`, {
       method: "GET",
       headers: { Authorization: key }
     })
@@ -50,21 +35,6 @@ class MakerMaking extends Component {
       )
       .catch(error => this.setState({ error, isLoading: false }));
   }
-
-  // getFromUsers = () => {
-  //   fetch(`${API_TS}/fund/maker`, {
-  //     method: "GET",
-  //     headers: { Authorization: key }
-  //   })
-  //     .then(res => res.json())
-  //     .then(data =>
-  //       this.setState({
-  //         user_name: data.user_name,
-  //         user_email: data.user_email
-  //       })
-  //     )
-  //     .catch(error => this.setState({ error, isLoading: false }));
-  // };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -98,9 +68,24 @@ class MakerMaking extends Component {
         if (response.SUCCESS === "200") {
           console.log("success");
         }
-        this.props.history.push("/");
+        this.props.history.push("/project");
+      });
+
+    fetch(`${API_TS}/fund/project`, {
+      method: "POST"
+    })
+      .then(response => {
+        console.log(response, "response");
+        return response.json();
+      })
+      .then(response => {
+        console.log(response);
+        if (response.SUCCESS === "200") {
+          console.log("success");
+        }
       });
   };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -129,10 +114,18 @@ class MakerMaking extends Component {
             메이커(기업)명
           </MakerInput>
           <MakerSelection name="kind" onChange={this.handleChange} />
-          <MakerInput name="user_name" onChange={this.handleDisabled}>
+          <MakerInput
+            name="user_name"
+            value={this.state.user_name}
+            disabled={this.state.disabled ? "disabled" : ""}
+          >
             관리자 명
           </MakerInput>
-          <MakerInput name="user_email" onChange={this.handleDisabled}>
+          <MakerInput
+            name="user_email"
+            value={this.state.user_email}
+            disabled={this.state.disabled ? "disabled" : ""}
+          >
             관리자 이메일
           </MakerInput>
           <MakerHelper>
@@ -153,5 +146,20 @@ class MakerMaking extends Component {
     );
   }
 }
+
+const MakerWrapper = styled.div`
+  margin-right: calc(50% - 500px);
+  margin-left: calc(50% - 500px);
+  padding: 40px 66px;
+  height: 100%;
+`;
+
+const MakerForm = styled.form`
+  position: relative;
+`;
+
+const MarginMaker = styled.div`
+  margin-top: 80px;
+`;
 
 export default MakerMaking;

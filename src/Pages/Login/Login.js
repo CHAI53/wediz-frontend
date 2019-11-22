@@ -22,7 +22,7 @@ class Login extends Component {
   };
 
   goToMain = () => {
-    this.props.history.push("/main");
+    this.props.history.push("/");
   };
 
   handleChange = e => {
