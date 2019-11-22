@@ -13,26 +13,6 @@ class ArrowBtn extends Component {
     };
   }
 
-  moveSlider = (e, point = 1) => {
-    let nextI = this.state.i;
-    nextI += point;
-    clearInterval(this.interval);
-    this.interval = setInterval(() => this.moveSlider(null), 3000);
-    setTimeout(this.interval, 1000);
-
-    if (nextI >= slideData.length) {
-      nextI = 0;
-    }
-    if (nextI < 0) {
-      nextI = slideData.length - 1;
-    }
-    this.setState({
-      i: nextI,
-      headline: slideData[nextI].headline,
-      path: slideData[nextI].path
-    });
-  };
-
   render() {
     return (
       <ArrowBtnWrapper>

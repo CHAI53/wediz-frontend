@@ -3,7 +3,7 @@ import NavBar from "Components/NavBar";
 import BigHeader from "Components/BigHeader";
 import Footer from "Components/Footer";
 import CategoryBar from "./CategoryBar";
-import RewardList from "./RewardList";
+import RewardView from "./RewardView";
 // import AfterLoginNav from "Components/AfterLoginNav";
 // import { isUserLoggedIn } from "Utils/Utils";
 
@@ -14,7 +14,7 @@ class MainPage extends Component {
         <NavBar />
         <BigHeader />
         <CategoryBar />
-        <RewardList />
+        <RewardView />
         <Footer />
       </main>
     );

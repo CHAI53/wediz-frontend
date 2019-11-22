@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { font, color, device } from "Styles/Common.js";
-//import Socialicon from "Images/socialicon.png";
+//import icon from "Images/socialicon.png";
 
 class Footer extends Component {
   render() {
@@ -82,7 +82,7 @@ const CorpDesc = styled.span`
 const Bold = styled.p`
   margin-top: 10px;
   margin-bottom: 13px;
-  line-height: 20px;
+  line-height: 12px;
   font-size: 15px;
   font-weight: 700;
 `;
@@ -116,14 +116,11 @@ const Icons = styled.li`
 `;
 
 const IconImg = styled.a`
-  width: 40px;
-  height: 40px;
+  width: 10px;
+  height: 10px;
   transition: color 0.2s;
   color: #212121;
   z-index: 100;
-  background-repeat: no-repeat;
-  background-position: -200px 0;
 `;
-//background-image: url(${props.bgImg});
 
 export default Footer;
