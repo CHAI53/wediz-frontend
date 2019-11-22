@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 class CategoryBtn extends Component {
   render() {
-    console.log(this.props, "dsfs");
+    console.log(this.props.data, "dsfs");
     return (
       <BtnWrapper>
-        <Circle />
+        <Circle path={this.props.path} />
         <Desc>{this.props.name}</Desc>
       </BtnWrapper>
     );
@@ -22,7 +22,6 @@ const Desc = styled.span`
 `;
 
 const Circle = styled.div`
-  display: inline-block;
   position: relative;
   transition-property: border-color, border-width;
   margin: 0 auto;
@@ -32,8 +31,8 @@ const Circle = styled.div`
   height: 56px;
   box-sizing: border-box;
   background-image: url(${props => props.path});
+  background-size: cover;
 `;
-// background: ${props => `url(${props.path}) no-repeat 50% center`};
 
 const BtnWrapper = styled.div`
   display: inline-block;

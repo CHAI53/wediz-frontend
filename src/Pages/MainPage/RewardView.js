@@ -1,48 +1,37 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { device } from "Styles/Common.js";
-import { API_TS } from "Datas/Config";
+import data from "./MainData.js";
+import RewardItem from "./RewardItem";
 
-class RewardList extends Component {
-  //   constructor() {
-  //     super(props);
-  //     this.state = {
-  //         data: [
-  //             {
-  //                 title:"",
-  //                 main-image: "",
-  //                 goal-money : "",
-  //                 category: "",
-  //                 "maker"   :  [{ ..., 'name' : 'df', ....}],
-  //                deadline :  "",
-  //              }
-  //         ]
-  //     };
-  //   }
-  componentDidMount() {
-    const key = window.localStorage.getItem("VALID_TOKEN");
-    fetch(`${API_TS}/fund/maininfo`, {
-      method: "GET",
-      headers: { Authorization: key }
-    })
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          user_name: data.user_name,
-          user_email: data.user_email
-        })
-      )
-      .catch(error => this.setState({ error, isLoading: false }));
+class RewardView extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data
+    };
   }
 
   render() {
+    const { data } = this.state;
+    const list = data.map(el => (
+      <RewardItem
+        main_image={el.main_image}
+        title={el.title}
+        category_id={el.category_id}
+        maker_id={el.maker_id}
+        percent={el.percent}
+        goal_money={el.goal_money}
+        deadline={el.deadline}
+      />
+    ));
     return (
       <RewardWrapper>
         <RewardHeader>
           <Title>전체보기</Title>
         </RewardHeader>
         <RewardCardList>
-          <GridWrapper></GridWrapper>
+          <GridWrapper>{list}</GridWrapper>
         </RewardCardList>
       </RewardWrapper>
     );
@@ -57,7 +46,8 @@ const GridWrapper = styled.div`
     grid-column-gap: 30px;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 24px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   transition: opacity 0.25s;
 `;
@@ -103,4 +93,4 @@ const RewardWrapper = styled.div`
   box-sizing: content-box;
 `;
 
-export default RewardList;
+export default RewardView;
