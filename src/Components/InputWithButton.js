@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import InputBox from "Components/InputBox";
-import BigLoginButton from "Components/BigLoginButton";
+import InputBox from "Components/InputBox.js";
+import BigLoginButton from "Components/BigLoginButton.js";
 
 const InputWithButton = ({ children, ...props }) => {
   return (

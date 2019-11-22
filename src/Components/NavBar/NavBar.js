@@ -59,6 +59,9 @@ const Header = styled.header`
   border-bottom: 1px solid #f0f2f5;
   height: 56px;
   font-size: ${font.size};
+  @media ${device.large} {
+    display: none;
+  }
 `;
 
 const ContainerL = styled.div`

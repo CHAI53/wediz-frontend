@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SquareChkBox from "Components/SquareChkBox";
+import SquareChkBox from "Components/SquareChkBox.js";
 
 const Promotion = props => {
   return (
