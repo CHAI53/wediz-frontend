@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { color } from "Styles/Common.js";
-import { API_TS } from "Datas/Config.js";
+import { API_TS, API_SH } from "Datas/Config.js";
 import LoginSignupHeader from "Components/LoginSignupHeader.js";
 import InputWithButton from "Components/InputWithButton.js";
 import InputWithImage from "Components/InputWithImage.js";
@@ -76,7 +76,7 @@ class EmailSignup extends Component {
       re_password &&
       password === re_password
     ) {
-      fetch(`${API_TS}/account/signup`, {
+      fetch(`${API_SH}/account/signup`, {
         method: "post",
         body: JSON.stringify({
           email,

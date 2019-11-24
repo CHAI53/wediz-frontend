@@ -50,10 +50,12 @@ class MyProfile extends Component {
       axios
         .post(`${API_TS}/account/modifyprofilephoto`, formData, {
           headers: {
-            Authorization: window.localStorage.VALID_TOKEN
+            Authorization:
+              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
           }
         })
         .then(res => {
+          console.log(res);
           this.setState({
             image_url: res.data.photo_url
           });
@@ -66,7 +68,7 @@ class MyProfile extends Component {
   };
 
   goToMyPage = () => {
-    this.props.history.push("/mypage");
+    this.props.history.push("/");
   };
 
   handleCategory = e => {
@@ -105,7 +107,8 @@ class MyProfile extends Component {
     fetch(`${API_TS}/account/modifyprofile`, {
       method: "post",
       headers: {
-        Authorization: window.localStorage.VALID_TOKEN
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
       },
       body: JSON.stringify({
         education_kids,

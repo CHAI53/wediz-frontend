@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { FundContext } from "Datas/CompanyData";
-import { API_TS } from "Datas/Config.js";
+import { API_TS, API_SH } from "Datas/Config.js";
 import NavBar from "Components/NavBar";
 import RewardHeader from "Components/RewardHeader";
 import ProgressCircle from "Components/ProgressCircle";
@@ -44,23 +44,13 @@ class Purchase extends Component {
     if (data.length === 0) {
       this.props.history.push("/rewardlist");
     } else {
-      fetch(`${API_TS}/order`)
+      fetch(`${API_SH}/data/user.json`)
         .then(res => res.json())
         .then(res => {
           this.setState({
             user: res.data
           });
         });
-
-      // fetch(`${API_SH}/data/user.json`)
-      //   .then(res => res.json())
-      //   .then(res => {
-      //     this.setState({
-      //       data: res.data,
-      //       sponsor: res.sponsor
-      //     });
-      //   });
-
       let total = 0;
       data.forEach(e => {
         total = total + e.price * e.quantity;
@@ -133,7 +123,7 @@ class Purchase extends Component {
       totalAgree &&
       necessaryCheck
     ) {
-      fetch(`${API_TS}/basket`, {
+      fetch(`${API_SH}/basket`, {
         method: "post",
         header: window.localStorage.getItem("VALID_TOKEN"),
         body: JSON.stringify({

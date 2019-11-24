@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import { API_TS } from "Datas/Config.js";
+import { API_TS, API_SH } from "Datas/Config.js";
 import navCategoryForMakerStudio from "Datas/CategoryForMakerStudio.js";
 import AddRewardModal from "./AddRewardModal";
 import HeaderForMakerStudio from "./HeaderForMakerStudio";
@@ -48,7 +48,7 @@ class MakerStudioPage extends React.Component {
 
   handlePost = () => {
     const { reward } = this.state;
-    fetch(`${API_TS}/fund/reward`, {
+    fetch(`${API_SH}/fund/reward`, {
       method: "post",
       headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")

@@ -19,7 +19,7 @@ class MakerSelection extends Component {
       <>
         <MakerLabel>개인 · 사업자 구분</MakerLabel>
         <SelectionWrapper>
-          <MakerSelect onChange={e => this.selectChange(e)}>
+          <MakerSelect onChange={this.props.handleSelect}>
             <option value="" hidden>
               사업자 구분 선택
             </option>

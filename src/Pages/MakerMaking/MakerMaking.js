@@ -22,7 +22,7 @@ class MakerMaking extends Component {
 
   componentDidMount() {
     const key = window.localStorage.getItem("VALID_TOKEN");
-    fetch(`${API_TS}/account/maker`, {
+    fetch(`${API_SH}/account/maker`, {
       method: "GET",
       headers: { Authorization: key }
     })
@@ -41,33 +41,6 @@ class MakerMaking extends Component {
 
     const { name, kind, phone_number, is_agreed } = this.state;
 
-    fetch(`${API_TS}/account/maker`, {
-      method: "POST",
-      headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
-
-        //window.localStorage.getItem("VALID_TOKEN")
-      },
-      body: JSON.stringify({
-        name,
-        kind,
-        phone_number,
-        is_agreed
-      })
-    })
-      .then(response => {
-        response.json();
-      })
-      .then(response => {
-        console.log("태순님=====", response);
-        if (response) {
-          this.props.history.push("/maker/funding/baseinfo");
-        } else {
-          alert(response);
-        }
-      });
-
     fetch(`${API_SH}/fund/project`, {
       method: "POST",
       headers: {
@@ -82,6 +55,27 @@ class MakerMaking extends Component {
         if (response.MESSAGE === "SUCCESS") {
         }
       });
+    setTimeout(
+      fetch(`${API_SH}/account/maker`, {
+        method: "POST",
+        headers: {
+          Authorization: window.localStorage.getItem("VALID_TOKEN")
+        },
+        body: JSON.stringify({
+          name,
+          kind,
+          phone_number,
+          is_agreed: true
+        })
+      })
+        .then(response => {
+          response.json();
+        })
+        .then(response => {
+          this.props.history.push("/maker/funding/baseinfo");
+        }),
+      1000
+    );
   };
 
   handleChange = e => {
@@ -102,7 +96,15 @@ class MakerMaking extends Component {
     });
   };
 
+  handleSelect = e => {
+    this.setState({
+      kind: e.target.value
+    });
+  };
+
   render() {
+    const { name, kind, phone_number, is_agreed } = this.state;
+    console.log(name, kind, phone_number, is_agreed);
     return (
       <MakerWrapper>
         <MakerNav />
@@ -111,7 +113,7 @@ class MakerMaking extends Component {
           <MakerInput name="name" onChange={this.handleChange} type="text">
             메이커(기업)명
           </MakerInput>
-          <MakerSelection name="kind" onChange={this.handleChange} />
+          <MakerSelection name="kind" handleSelect={this.handleSelect} />
           <MakerInput
             name="user_name"
             value={this.state.user_name}
@@ -132,7 +134,12 @@ class MakerMaking extends Component {
             관리자명과 이메일 주소는 로그인 아이디와 연동되어 있으므로 변경을
             원할 경우 회원 정보 설정에서 변경하세요.
           </MakerHelper>
-          <MakerInput width="782px" display="inline-block" name="phone_number">
+          <MakerInput
+            width="782px"
+            display="inline-block"
+            name="phone_number"
+            onChange={this.handleChange}
+          >
             관리자 휴대폰 번호
           </MakerInput>
           <AgreementChk name="is_agreed" />
