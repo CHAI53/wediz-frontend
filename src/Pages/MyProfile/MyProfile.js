@@ -50,12 +50,14 @@ class MyProfile extends Component {
       axios
         .post(`${API_TS}/account/modifyprofilephoto`, formData, {
           headers: {
-            Authorization: window.localStorage.VALID_TOKEN
+            Authorization: window.localStorage.getItem("VALID_TOKEN")
           }
         })
         .then(res => {
+          console.log("file upload====", res.data.photo_url);
+          const image_url = res.data.photo_url;
           this.setState({
-            image_url: res.data.photo_url
+            image_url
           });
         });
     } else {
@@ -66,7 +68,7 @@ class MyProfile extends Component {
   };
 
   goToMyPage = () => {
-    this.props.history.push("/mypage");
+    this.props.history.push("/");
   };
 
   handleCategory = e => {
@@ -128,6 +130,7 @@ class MyProfile extends Component {
       .then(res => res.json())
       .then(res => {
         if (res.MESSAGE === "SUCCESS") {
+          console.log(res);
           this.goToMyPage();
         }
       });

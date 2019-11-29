@@ -38,48 +38,35 @@ class MakerMaking extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     const { name, kind, phone_number, is_agreed } = this.state;
 
     fetch(`${API_TS}/account/maker`, {
       method: "POST",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
-
-        //window.localStorage.getItem("VALID_TOKEN")
+        Authorization: window.localStorage.getItem("VALID_TOKEN")
       },
       body: JSON.stringify({
         name,
         kind,
         phone_number,
-        is_agreed
+        is_agreed: true
       })
-    })
-      .then(response => {
-        response.json();
-      })
-      .then(response => {
-        console.log("태순님=====", response);
-        if (response) {
-          this.props.history.push("/maker/funding/baseinfo");
-        } else {
-          alert(response);
-        }
-      });
+    }).then(response => {
+      response.json();
+      console.log("first responst====", response);
+    });
 
     fetch(`${API_SH}/fund/project`, {
       method: "POST",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDg3NzUzfQ.ImpSLmihoK8qja3L9iEwLk2jKAxGaUAhoVDIb6mLTKA"
-        //window.localStorage.getItem("VALID_TOKEN")
+        Authorization: window.localStorage.getItem("VALID_TOKEN")
       }
     })
       .then(response => response.json())
       .then(response => {
         console.log("성현님===", response);
         if (response.MESSAGE === "SUCCESS") {
+          this.goToMakerStudio();
         }
       });
   };
@@ -102,7 +89,12 @@ class MakerMaking extends Component {
     });
   };
 
+  goToMakerStudio = () => {
+    this.props.history.push("/maker/funding/baseinfo");
+  };
+
   render() {
+    console.log(this.state.is_agreed);
     return (
       <MakerWrapper>
         <MakerNav />

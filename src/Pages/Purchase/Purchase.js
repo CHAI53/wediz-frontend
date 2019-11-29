@@ -41,36 +41,16 @@ class Purchase extends Component {
   };
   componentDidMount = () => {
     const { data } = this.state;
-    if (data.length === 0) {
-      this.props.history.push("/rewardlist");
-    } else {
-      fetch(`${API_TS}/order`)
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            user: res.data
-          });
-        });
+    fetch(`${API_TS}/account/modifyprofile`);
 
-      // fetch(`${API_SH}/data/user.json`)
-      //   .then(res => res.json())
-      //   .then(res => {
-      //     this.setState({
-      //       data: res.data,
-      //       sponsor: res.sponsor
-      //     });
-      //   });
+    let total = 0;
+    data.forEach(e => {
+      total = total + e.price * e.quantity;
+    });
 
-      let total = 0;
-      data.forEach(e => {
-        total = total + e.price * e.quantity;
-      });
-
-      this.setState({
-        total
-      });
-    }
-    console.log("되라", this.state.data);
+    this.setState({
+      total
+    });
   };
 
   handleChange = e => {
@@ -151,7 +131,7 @@ class Purchase extends Component {
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res);
+          console.log("결제하기 response ====", res);
         });
       let keyToRemove = ["data", "sponsor"];
       keyToRemove.forEach(key => window.localStorage.removeItem(key));

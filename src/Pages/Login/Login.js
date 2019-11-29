@@ -44,8 +44,10 @@ class Login extends Component {
       .then(res => {
         window.localStorage.setItem("VALID_TOKEN", res.VALID_TOKEN);
         if (res.VALID_TOKEN) {
+          console.log(res);
           this.goToMain();
         } else {
+          console.log(res);
           this.setState({
             is_login: "inline"
           });

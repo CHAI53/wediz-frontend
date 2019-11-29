@@ -46,7 +46,7 @@ export class RewardList extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        console.log("리워드 설계에서 오는 data", res.data);
         this.setState({
           data: res.data
         });
@@ -168,8 +168,10 @@ export class RewardList extends Component {
         selected_data.push(e);
       }
     });
+
+    selected_data.forEach(e => {});
     this.props.history.push("/purchase");
-    fetch(`${API_TS}/order/`, {
+    fetch(`${API_TS}/order/basket`, {
       method: "post",
       headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
@@ -180,8 +182,8 @@ export class RewardList extends Component {
       })
     })
       .then(res => res.json())
-      .then(res => console.log(res));
-    console.log(selected_data);
+      .then(res => console.log("fetchresponse=====", res));
+    console.log("selected Data다!!!", selected_data);
     window.localStorage.setItem("data", JSON.stringify(selected_data));
     window.localStorage.setItem("sponsor", this.state.sponsor);
   };
