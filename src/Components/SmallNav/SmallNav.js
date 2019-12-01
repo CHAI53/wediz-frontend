@@ -30,17 +30,14 @@ class SmallNav extends Component {
 
 const Header = styled.header`
   @media ${device.smallMin} {
-    padding: 0 27px 0 28px;
+    position: relative;
+    top: 0;
+    z-index: 9998;
+    background-color: #fff;
+    width: 100%;
+    height: 48px;
+    text-align: center;
   }
-  position: relative;
-  top: 0;
-  z-index: 9998;
-  background-color: #fff;
-  width: 100%;
-  height: 48px;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
 `;
 
 const ContainerL = styled.div`

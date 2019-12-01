@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NavBar from "Components/NavBar";
 import BigHeader from "Components/BigHeader";
 import Footer from "Components/Footer";
+import SmallNav from "Components/SmallNav";
 import CategoryBar from "./CategoryBar";
 import RewardView from "./RewardView";
 // import AfterLoginNav from "Components/AfterLoginNav";

@@ -88,7 +88,7 @@ const RewardWrapper = styled.div`
     padding: 0 16px;
   }
   position: relative;
-  margin: 0 40px auto;
+  margin: 20px auto;
   max-width: 1032px;
   box-sizing: content-box;
 `;
