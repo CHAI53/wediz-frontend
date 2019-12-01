@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import { API_SH } from "Datas/Config.js";
+import { API_TS } from "Datas/Config.js";
 import navCategoryForMakerStudio from "Datas/CategoryForMakerStudio.js";
 import AddRewardModal from "./AddRewardModal";
 import HeaderForMakerStudio from "./HeaderForMakerStudio";
 import MakerStudioNav from "./MakerStudioNav.js";
 import FundingStory from "Components/FundingStory.js";
 import DesignReward from "./DesignReward";
+import BaseInfo from "./BaseInfo";
 
 class MakerStudioPage extends React.Component {
   state = {
@@ -47,7 +48,7 @@ class MakerStudioPage extends React.Component {
 
   handlePost = () => {
     const { reward } = this.state;
-    fetch(`${API_SH}/fund/reward`, {
+    fetch(`${API_TS}/fund/reward`, {
       method: "post",
       headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
@@ -82,7 +83,7 @@ class MakerStudioPage extends React.Component {
 
   render() {
     const { showRewardAddModal, reward } = this.state;
-    console.log(reward);
+    const { id } = this.props.match.params;
     return (
       <>
         <AddRewardModal
@@ -96,7 +97,7 @@ class MakerStudioPage extends React.Component {
             navCategory={this.state}
             getAddress={this.handleAddress}
           />
-          {this.props.match.params.id === "design" ? (
+          {id === "design" ? (
             <DesignReward
               showModal={showRewardAddModal}
               openModal={this.openModal}
@@ -104,7 +105,9 @@ class MakerStudioPage extends React.Component {
               deleteReward={this.deleteReward}
               data={reward}
             />
-          ) : "story" ? (
+          ) : id === "baseinfo" ? (
+            <BaseInfo />
+          ) : id === "story" ? (
             <FundingStory />
           ) : (
             ""

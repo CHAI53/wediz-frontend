@@ -75,15 +75,19 @@ class CategoryForMakerStudio extends React.Component {
             >
               {optionZero}
             </Option>
-
-            <Option
-              name="optionOne"
-              id={optionOneId}
-              onClick={this.handleDetectClick}
-              hightlight={highlight === optionOneId}
+            <Link
+              to="/maker/funding/baseinfo"
+              style={{ textDecoration: "none" }}
             >
-              {optionOne}
-            </Option>
+              <Option
+                name="optionOne"
+                id={optionOneId}
+                onClick={this.handleDetectClick}
+                hightlight={highlight === optionOneId}
+              >
+                {optionOne}
+              </Option>
+            </Link>
             <Link to="/maker/funding/story" style={{ textDecoration: "none" }}>
               <Option
                 name="optionTwo"

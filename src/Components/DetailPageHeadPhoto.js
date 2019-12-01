@@ -18,15 +18,14 @@ class DetailPageHeadPhoto extends Component {
 }
 export default DetailPageHeadPhoto;
 
-const DetailPageHeaderContainer = styled.div`
-  position: relative;
-`;
 const HeadPhotoContainer = styled.div`
   width: 100%;
   height: 245px;
-  background-image: url('${props => props.photo}');
-  background-size: 100%;
-  filter: blur(3px);
+  background-image: url(https://cdn.wadiz.kr/wwwwadiz/green001/2019/1120/20191120161137455_52146.jpg/wadiz/format/jpg/quality/80/optimize);
+  background-size: 150%;
+  -webkit-filter: blur(3px);
+  filter: blur(4px);
+  background-position: -256px -97px;
 `;
 
 const BlurForPhoto = styled.div`
@@ -44,6 +43,7 @@ const HeadCategory = styled.div`
   font-size: 14px;
   color: ${color.blue};
   margin-bottom: 40px;
+  z-index: 2;
 `;
 
 const HeadTitle = styled.div`
@@ -58,8 +58,8 @@ const LocateTitle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 245px;
-  top: -244px;
+  top: 50px;
 `;

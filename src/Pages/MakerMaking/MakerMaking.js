@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { API_TS } from "Datas/Config";
+import { API_TS, API_SH } from "Datas/Config";
 import MakerNav from "./MakerNav";
 import MakerDesc from "./MakerDesc";
 import MakerSelection from "./MakerSelection";
@@ -27,61 +27,59 @@ class MakerMaking extends Component {
       headers: { Authorization: key }
     })
       .then(res => res.json())
-      .then(data =>
+      .then(res => {
+        console.log(res);
         this.setState({
-          user_name: data.user_name,
-          user_email: data.user_email
-        })
-      )
-      .catch(error => this.setState({ error, isLoading: false }));
+          user_name: res.data[0].user_name,
+          user_email: res.data[0].user_email
+        });
+      });
   }
 
   handleSubmit = e => {
     e.preventDefault();
 
-    const {
-      name,
-      kind,
-      user_name,
-      user_email,
-      phone_number,
-      is_agreed
-    } = this.state;
+    const { name, kind, phone_number, is_agreed } = this.state;
 
-    fetch(`${API_TS}/fund/maker`, {
+    fetch(`${API_TS}/account/maker`, {
       method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
+
+        //window.localStorage.getItem("VALID_TOKEN")
+      },
       body: JSON.stringify({
         name,
         kind,
-        user_name,
-        user_email,
         phone_number,
         is_agreed
       })
     })
       .then(response => {
-        console.log(response, "response");
-        return response.json();
+        response.json();
       })
       .then(response => {
-        console.log(response);
-        if (response.SUCCESS === "200") {
-          console.log("success");
+        console.log("태순님=====", response);
+        if (response) {
+          this.props.history.push("/maker/funding/baseinfo");
+        } else {
+          alert(response);
         }
-        this.props.history.push("/project");
       });
 
-    fetch(`${API_TS}/fund/project`, {
-      method: "POST"
+    fetch(`${API_SH}/fund/project`, {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDg3NzUzfQ.ImpSLmihoK8qja3L9iEwLk2jKAxGaUAhoVDIb6mLTKA"
+        //window.localStorage.getItem("VALID_TOKEN")
+      }
     })
+      .then(response => response.json())
       .then(response => {
-        console.log(response, "response");
-        return response.json();
-      })
-      .then(response => {
-        console.log(response);
-        if (response.SUCCESS === "200") {
-          console.log("success");
+        console.log("성현님===", response);
+        if (response.MESSAGE === "SUCCESS") {
         }
       });
   };
@@ -117,14 +115,16 @@ class MakerMaking extends Component {
           <MakerInput
             name="user_name"
             value={this.state.user_name}
-            disabled={this.state.disabled ? "disabled" : ""}
+            disabled
+            background="#efefef"
           >
             관리자 명
           </MakerInput>
           <MakerInput
             name="user_email"
             value={this.state.user_email}
-            disabled={this.state.disabled ? "disabled" : ""}
+            background="#efefef"
+            disabled
           >
             관리자 이메일
           </MakerInput>

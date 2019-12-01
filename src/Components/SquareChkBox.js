@@ -11,8 +11,12 @@ const SquareChkBox = ({
 }) => {
   return (
     <Label checkedColor={checkedColor}>
-      <Input type="checkbox" {...props} />
-      <Span textColor={textColor} chungRyulColor>
+      <Input type="checkbox" {...props} radius={props.radius} />
+      <Span
+        textColor={textColor}
+        chungRyulColor={props.chungRyulColor}
+        radius={props.radius}
+      >
         {children}
       </Span>
     </Label>
@@ -55,6 +59,7 @@ const Input = styled.input`
     height: 20px;
     border-right: 1px solid #fff;
     border-bottom: 1px solid #fff;
+    border-radius: ${props => props.radius || ""};
     transition: all 0.4s;
   }
   :checked::before {

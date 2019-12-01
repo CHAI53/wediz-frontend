@@ -130,13 +130,9 @@ const CategoryForFunding = ({ show, control, info }) => {
       {optionZero && (
         <OptionList control={control}>
           <Option>{optionZero}</Option>
-          <Link to="/maker/funding/baseInfo" style={{ textDecoration: "none" }}>
-            <Option>{optionOne}</Option>
-          </Link>
+          <Option>{optionOne}</Option>
           <Option>{optionTwo}</Option>
-          <Link to="/maker/funding/design" style={{ textDecoration: "none" }}>
-            <Option>{optionThree}</Option>
-          </Link>
+          <Option>{optionThree}</Option>
           <Option>{optionFour}</Option>
 
           <Option>{optionFive}</Option>
