@@ -45,4 +45,4 @@
 
 ### 데모 영상
 
-<a href="https://www.youtube.com/watch?v=po1Vagsnp1g">동영상 링크</a>
+<a href="https://www.youtube.com/watch?v=APVzav__6Q8">동영상 링크</a>
