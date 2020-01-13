@@ -1,5 +1,6 @@
 # Project WE-DIZ
 
+![Alt Text](https://media.giphy.com/media/SVrSGh3P6LE4hQF3vH/giphy.gif)
 
 
 
